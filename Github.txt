@@ -1,0 +1,46 @@
+git config --global user.name Shubham Yadav
+git config --global user.email shubhamyadav.456ss@gmail.com
+
+git init
+git status or status -s
+git add "filename.txt" or git add -A
+
+git commit  -m "Added more git htmls"	  //"initial commit"
+//commit is savepoint.
+
+git commit  -a -m " commits all file","Added more git htmls"	  //"second commit"
+to exit commit vm editor press esc:wq
+
+git checkout or checkout -f. to get prevoius changes.
+
+git log | log -p -n.  n=>1,2..		//history of commit
+
+git diff  or diff --staged
+
+git rm --cached "filename.txt" //this removes file from staged area , not from harddrive of pc.
+
+create gitignore file //ignores the  file u want
+-->*.log  //ignores all the log
+-->myfolder/   //ignores the myfolder1 folder
+-->/abc.html  //ignores abc.html only without entering into any folder 
+
+//Tocreate branch
+git branch feature1
+git checkout feature1  // to acces feature1
+
+//To merge feature 1 into master
+//first got to 
+git checkout master
+-->git merge feature1
+
+//to add branch and switch also in this at same time.
+-->git checkout -b "branchname"
+
+//to check the branch
+-->git branch
+
+git remote add origin "github link"
+git remote set-url origin "github link"
+git remote -v
+git push -u origin master
+
