@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
-import {View, StyleSheet, Image, Text, TextInput} from 'react-native';
+import {View, StyleSheet, Image, Text} from 'react-native';
 import React, {useContext} from 'react';
 import Main_button from '../components/Login';
 import Inputs from '../components/Inputs';
-import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth';
+import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {useNavigation} from '@react-navigation/native';
 import {Newcontext} from './Authiopn';
 import {firebase_auth} from '../../firebase';
