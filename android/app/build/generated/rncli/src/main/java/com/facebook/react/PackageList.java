@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import com.reactnativegif.GifPackage;
 // @react-native-async-storage/async-storage
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
+// react-native-gesture-handler
+import com.swmansion.gesturehandler.RNGestureHandlerPackage;
+// react-native-reanimated
+import com.swmansion.reanimated.ReanimatedPackage;
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
@@ -68,6 +72,8 @@ public class PackageList {
       new MainReactPackage(mConfig),
       new GifPackage(),
       new AsyncStoragePackage(),
+      new RNGestureHandlerPackage(),
+      new ReanimatedPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),
       new VectorIconsPackage()

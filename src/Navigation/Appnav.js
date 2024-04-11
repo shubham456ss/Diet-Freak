@@ -4,13 +4,14 @@ import {View, StyleSheet} from 'react-native';
 import { Newcontext } from '../screens/Authiopn';
 import TabRoutes from './TabRoutes';
 import Authstack from './AuthStack';
+import Mainstack from './MainStack';
 
 
 function Appnav() {
     const {usertoken} = useContext(Newcontext);
   return (
     <View style={styles.root}>
-     {usertoken !== null ? <TabRoutes/> : <Authstack/>}
+     {usertoken !== null ? <Mainstack/> : <Authstack/>}
     </View>
   );
 }

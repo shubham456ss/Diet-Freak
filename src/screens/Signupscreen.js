@@ -20,7 +20,7 @@ const Signupscreen = () => {
         const user = userCredentials.user;
         console.log(user.email);
         alert('Success! You have successfully signed up');
-        navigation.navigate('Initial');
+        navigation.navigate('Loginscreen');
       })
       .catch(error => alert(error.message));
   };

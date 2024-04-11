@@ -6,6 +6,7 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 // import { Home, Profile } from '../';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MainScreen from '../screens/MainScreen';
@@ -15,7 +16,7 @@ import LogoutButton from '../screens/Logout';
 
 const BottomTab = createBottomTabNavigator();
 
-const TabRoutes = () => {
+export const TabRoutes = () => {
   return (
     <BottomTab.Navigator
       tabBar={tabsProps => (
@@ -35,7 +36,7 @@ const TabRoutes = () => {
         }}
       />
       <BottomTab.Screen
-        name="Calcultor"
+        name="Calculator"
         component={Calculator}
         options={{
           tabBarLabel: 'Calculate',
@@ -57,5 +58,6 @@ const TabRoutes = () => {
     </BottomTab.Navigator>
   );
 };
+
 
 export default TabRoutes;

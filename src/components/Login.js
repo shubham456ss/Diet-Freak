@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   },
   tex: {
     color: 'white',
-    color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
   },

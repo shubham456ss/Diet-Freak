@@ -13,7 +13,7 @@ import {firebase_auth} from '../../firebase';
 
 
 
-const Initialscreen = () => {
+const Loginscreen = () => {
   const auth = firebase_auth;
   const {email, setemail, password, setpassword,loggin} = useContext(Newcontext);
   const navigation = useNavigation();
@@ -28,7 +28,7 @@ const Initialscreen = () => {
         navigation.navigate('Homescreen');
       })
       .catch(error => {
-        navigation.navigate('Initial');
+        navigation.navigate('Loginscreen');
         alert(error.message)
         console.warn("Email or password is incorrect/invalid")
       });
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Initialscreen;
+export default Loginscreen;
