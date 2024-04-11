@@ -1,6 +1,6 @@
 /* eslint-disable quotes *//* eslint-disable prettier/prettier */
 import React from "react";
-import { ScrollView , FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 // const persons = [
 //     {key: "1", value: "Mobiles"},

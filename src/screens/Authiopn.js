@@ -1,6 +1,6 @@
 /* eslint-disable semi *//* eslint-disable prettier/prettier */
 
-import {createContext, useState,useEffect} from 'react';
+import {createContext, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Newcontext = createContext();

@@ -14,13 +14,12 @@ const Stack = createStackNavigator();
 
 
 export default function Routes() {
-
+    const [no, setNo] = useState(null);
     const [userData,setUserData] = useState(null);
 
-    useEffect(() => {
-       getData();
-    //    eslint-disable-next-line
-      }, []);
+    // useEffect(() => {
+    //    getData();
+    //   }, [no,userData]);
       
      async function getData (){
           const data = await AsyncStorage.getItem('userData');

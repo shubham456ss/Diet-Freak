@@ -14,11 +14,12 @@ import {
 } from "react-native";
 import SelectList from '../components/SelectList';
 import List from '../components/List';
-import { Axios } from "axios";
+import axios from "axios";
 import Generate from "../components/Generate";
+import { GenderData } from "../components/CalData";
 
 
-const diet = [
+const Diet_Data = [
     {key:'1', label: "pescetarian",value: "pescetarian"},
     {key:'2', label: "lacto vegetarian", value: "lacto vegetarian"},
     {key:'3', label: "ovo vegetarian", value: "ovo vegetarian"},
@@ -29,7 +30,7 @@ const diet = [
   ];
 
 
-  const meal = [
+  const Meal_Data = [
     {key:'1', label: "1", value: "1"},
     {key:'2', label: "2", value: "2"},
     {key:'3', label: "3", value: "3"},
@@ -37,7 +38,7 @@ const diet = [
     {key:'5', label: "5", value: "5"},
   ];
 
- export const cuisineData =  [
+ const Cuisine_Data =  [
   {key:'1', label: "indian",value: "indian"},
   {key:'2', label: "chinese", value: "chinese"},
   {key:'3', label: "italian", value: "italian"},
@@ -49,94 +50,118 @@ const diet = [
 
 function MainScreen() {
 
-  const [calorie, onChangeCalorie] = useState("");
-  const [cuisine,setCusine]=useState(cuisine);
-  const [apiData,setApiData] = useState([]);
+  const [calorie, setCalorie] = useState('');
+  const [cuisine, setCusine] = useState(Cuisine_Data);
+  const [diet, setDiet] = useState(Diet_Data);
+  const [meal, setMeal] = useState(Meal_Data);
+  const [apiData,setApiData] = useState();
+//  const options = {
+//    method: 'GET',
+  let url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=pasta&diet=${diet}&maxCalories=${calorie}`;
+  //  params: {
+  //    cuisine: `${cuisine}`,
+  //    diet: 'vegetarian',
+  //    type: 'main course',
+  //    sort: 'calories',
+  //    sortDirection: 'asc',
+  //    minCarbs: '10',
+  //    maxCarbs: '100',
+  //    minProtein: '5',
+  //    maxProtein: '100',
+  //    minCalories: '50',
+  //    maxCalories: `${calorie}`,
+  //    minFat: '15',
+  //    maxFat: '100',
+  //    minCalcium: '0',
+  //    maxCalcium: '100',
+  //    minCholesterol: '0',
+  //    maxCholesterol: '100',
+  //    minSugar: '0',
+  //    maxSugar: '100',
+  //    minZinc: '0',
+  //    maxZinc: '100',
+  //    calorie: '30',
+  //  },
+//    headers: {
+//      'X-RapidAPI-label': 'a3d7d71d81msh2f2a5f9032a1aa5p17b599jsn16a1cea88816',
+//      'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+//    },
+//  };
+  
+  async function GenerateData() {
+    // console.log()
+    try {
 
-//   async function GenerateData(){
+      let response = await axios.get(url, {
+        headers: {
+          'X-RapidAPI-Key':
+            'c0f52ddfc0msh7170c2bb258021dp1c5796jsn53e161eafcbf',
+          'X-RapidAPI-Host':
+            'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+        },
+      });
 
-//     const options = {
-//       method: 'GET',
-//       url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch',
-//       params: {
-//         cuisine: `${cuisine}`,
-//         diet: 'vegetarian',
-//         type: 'main course',
-//         sort: 'calories',
-//         sortDirection: 'asc',
-//         minCarbs: '10',
-//         maxCarbs: '100',
-//         minProtein: '5',
-//         maxProtein: '100',
-//         minCalories: '50',
-//         maxCalories: `${calorie}`,
-//         minFat: '15',
-//         maxFat: '100',
-//         minCalcium: '0',
-//         maxCalcium: '100',
-//         minCholesterol: '0',
-//         maxCholesterol: '100',
-//         minSugar: '0',
-//         maxSugar: '100',
-//         minZinc: '0',
-//         maxZinc: '100',
-//         calorie: '30',
-//       },
-//       headers: {
-//         'X-RapidAPI-label': 'a3d7d71d81msh2f2a5f9032a1aa5p17b599jsn16a1cea88816',
-//         'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-//       }
-//     };
+      const { a, b, results, c } = response.data;
+      setApiData(results);
+      console.log(results);
 
-//     try {
-//       // const response = await Axios.request(options);
-//       // console.log(response.data);
-
-//     } catch (error) {
-//       console.log(error);
-//     }
-// }
+    } catch (error) {
+      console.log(error);
+    }
+}
 
 
   return (
-    <SafeAreaView >
-       {/* <ScrollView contentInsetAdjustmentBehavior="automatic" > */}
-        <View style={Styles.sectionContainer}>
-          <Text style={Styles.Title}> </Text>
+    <SafeAreaView>
+      {/* <ScrollView contentInsetAdjustmentBehavior="automatic" > */}
+      <View style={Styles.sectionContainer}>
+        <Text style={Styles.Title}> </Text>
 
-          <SelectList label={"Food Type"} data={diet}/>
+        <SelectList
+          label={'Food Type'}
+          data={Diet_Data}
+          value={diet}
+          setValue={setDiet}
+        />
 
-          <Text style={Styles.Title}></Text>
+        <Text style={Styles.Title}></Text>
 
-          <View style={Styles.fieldSet}>
-            <Text style={Styles.legend}>I want to eat</Text>
-            <TextInput
-              style={Styles.input}
-              search={false}
-              onChangeText={onChangeCalorie}
-              value={calorie}
-              placeholder="Calories"
-              labelboardType="numeric"
-              placeholderTextColor={"#0008"}
-            />
-          </View>
-
-          <SelectList label={"In Meals"} data={meal}/>
-
-          <SelectList label={"Cuisine"} data={cuisineData}/>
-
-          <Pressable style={Styles.btn} onPress={()=>{}}>
-          <Text style={Styles.btn.text}>Generate</Text>
-         </Pressable>
-
-             {/* <List genData={diet}/> */}
-
-      
-
-         {/* <Generate apiData={apiData} calorie={calorie}/> */}
-
+        <View style={Styles.fieldSet}>
+          <Text style={Styles.legend}>I want to eat</Text>
+          <TextInput
+            style={Styles.input}
+            search={false}
+            onChangeText={setCalorie}
+            value={calorie}
+            placeholder="Calories"
+            labelboardType="numeric"
+            placeholderTextColor={'#0008'}
+          />
         </View>
-       {/* </ScrollView> */}
+
+        {/* <SelectList
+          label={'In Meals'}
+          data={Meal_Data}
+          value={meal}
+          setValue={setMeal}
+        /> */}
+
+        <SelectList
+          label={'Cuisine'}
+          data={Cuisine_Data}
+          value={cuisine}
+          setValue={setCusine}
+        />
+
+        <Pressable style={Styles.btn} onPress={Generate}>
+          <Text style={Styles.btn.text}>Generate</Text>
+        </Pressable>
+
+        {/* <List genData={diet}/> */}
+
+        <Generate apiData={apiData} calorie={ parseFloat(calorie)} />
+      </View>
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 }

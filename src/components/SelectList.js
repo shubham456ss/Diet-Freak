@@ -6,9 +6,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 // import AntDesign from '@expo/vector-icons/AntDesign';
 
-const SelectList = ({label,data}) => {
+const SelectList = ({label,data,value,setValue}) => {
 
-  const [value, setValue] = useState(null);
+  // const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
   const renderLabel = () => {
@@ -53,7 +53,6 @@ export default SelectList;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    marginTop:20,
   },
   dropdown: {
     height: 50,

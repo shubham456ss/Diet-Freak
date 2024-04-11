@@ -22,7 +22,7 @@ const TabRoutes = () => {
             initialRouteName="Home"
         >
             <BottomTab.Screen name="Home" component={MainScreen} />
-            <BottomTab.Screen name="Calcultor" component={Calculator} />
+            <BottomTab.Screen name="Calculator" component={Calculator} />
             <BottomTab.Screen name="Setting" component={LogoutButton} />
         </BottomTab.Navigator>
 

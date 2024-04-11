@@ -1,9 +1,9 @@
-/* eslint-disable react-native/no-inline-styles */ /* eslint-disable react/react-in-jsx-scope */ /* eslint-disable quotes */ /* eslint-disable prettier/prettier */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable prettier/prettier */
 
-import {ScrollView, FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 
-function Generate({apiData,calorie}) {
-
+function Generate({apiData, calorie}) {
   const myItemSeparator = () => {
     return (
       <View
@@ -22,7 +22,7 @@ function Generate({apiData,calorie}) {
 
   function knapsack(items, targetValue) {
     // Shuffle the items randomly
-    items.sort(() => Math.random() - 0.5);
+    // items.sort(() => Math.random() - 0.5);
 
     // Initialize matrix for dynamic programming
     const dp = Array(items.length + 1)
@@ -75,39 +75,35 @@ function Generate({apiData,calorie}) {
   //   {key: 4, name: 'Item 4', value: 600},
   // ];
 
-
   const selectedItems = knapsack(apiData, calorie);
 
   return (
-    // <ScrollView contentInsetAdjustmentBehavior="automatic">
-      <FlatList
-        data={selectedItems}
-        renderItem={({item}) => (
-          <>
-            <Text>{item.name}</Text>
-            <Text style={styles.item}>{item.value}</Text>
-          </>
-        )}
-        keyExtractor={item => item.key}
-        // ItemSeparatorComponent={myItemSeparator}
-        // ListEmptyComponent={myListEmpty}
-        // ListHeaderComponent={() => (
-        //   <Text
-        //     style={{
-        //       fontSize: 30,
-        //       textAlign: 'center',
-        //       marginTop: 20,
-        //       fontWeight: 'bold',
-        //       textDecorationLine: 'underline',
-        //     }}>
-        //     List of Food
-        //   </Text>
-        // )}
-      />
-    // </ScrollView>
+    <FlatList
+      data={selectedItems}
+      renderItem={({item}) => (
+        <>
+          <Text>{item.name}</Text>
+          <Text style={styles.item}>{item.value}</Text>
+        </>
+      )}
+      keyExtractor={item => item.key}
+      ItemSeparatorComponent={myItemSeparator}
+      ListEmptyComponent={myListEmpty}
+      ListHeaderComponent={() => (
+        <Text
+          style={{
+            fontSize: 30,
+            textAlign: 'center',
+            marginTop: 20,
+            fontWeight: 'bold',
+            textDecorationLine: 'underline',
+          }}>
+          List of Food
+        </Text>
+      )}
+    />
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
