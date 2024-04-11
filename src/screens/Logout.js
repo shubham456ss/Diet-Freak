@@ -11,7 +11,7 @@ const LogoutButton = () => {
   const {logout} = useContext(Newcontext)
   const navigation = useNavigation();
   const out = ()=>{
-    navigation.navigate('Initial');
+    navigation.navigate('Loginscreen');
   }
   const handleLogout = () => {
     const auth = firebase_auth;

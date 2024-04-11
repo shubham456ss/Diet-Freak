@@ -55,38 +55,8 @@ function MainScreen() {
   const [diet, setDiet] = useState(Diet_Data);
   const [meal, setMeal] = useState(Meal_Data);
   const [apiData,setApiData] = useState();
-//  const options = {
-//    method: 'GET',
-  let url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=pasta&diet=${diet}&maxCalories=${calorie}`;
-  //  params: {
-  //    cuisine: `${cuisine}`,
-  //    diet: 'vegetarian',
-  //    type: 'main course',
-  //    sort: 'calories',
-  //    sortDirection: 'asc',
-  //    minCarbs: '10',
-  //    maxCarbs: '100',
-  //    minProtein: '5',
-  //    maxProtein: '100',
-  //    minCalories: '50',
-  //    maxCalories: `${calorie}`,
-  //    minFat: '15',
-  //    maxFat: '100',
-  //    minCalcium: '0',
-  //    maxCalcium: '100',
-  //    minCholesterol: '0',
-  //    maxCholesterol: '100',
-  //    minSugar: '0',
-  //    maxSugar: '100',
-  //    minZinc: '0',
-  //    maxZinc: '100',
-  //    calorie: '30',
-  //  },
-//    headers: {
-//      'X-RapidAPI-label': 'a3d7d71d81msh2f2a5f9032a1aa5p17b599jsn16a1cea88816',
-//      'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-//    },
-//  };
+
+  const url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=pasta&diet=${diet}&maxCalories=${calorie}`;
   
   async function GenerateData() {
     // console.log()

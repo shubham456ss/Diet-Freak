@@ -11,8 +11,20 @@ import {
 } from 'react-native';
 import React, {Component, useState} from 'react';
 import SelectList from '../components/SelectList';
+<<<<<<< HEAD
 // import {cuisineData} from './MainScreen';
 import {Cuisine_Data,MotiveData,UnitData,GenderData,BodyFatData,Activity,ActStrings} from '../components/CalData';
+=======
+import {cuisineData} from './MainScreen';
+import {
+  MotiveData,
+  UnitData,
+  GenderData,
+  BodyFatData,
+  Activity,
+  ActStrings,
+} from '../components/CalData';
+>>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
 
 export default function Calculator() {
   const [diet, setDiet] = useState(Cuisine_Data);
@@ -28,6 +40,7 @@ export default function Calculator() {
 
   return (
     <View style={Styles.sectionContainer}>
+<<<<<<< HEAD
       <SelectList
         label={'Current Diet'}
         data={Cuisine_Data}
@@ -35,34 +48,56 @@ export default function Calculator() {
         setValue={setDiet}
 
         // onChangeDiet={setDiet}
+=======
+      <Text style={Styles.Title}> Calci</Text>
+
+      <SelectList
+        label={'Current Diet'}
+        data={cuisineData}
+        onChangeDiet={setDiet}
+>>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
       />
 
       <SelectList
         label={'I want to'}
         data={MotiveData}
+<<<<<<< HEAD
         // onChangeMotive={setMotive}
         value={motive}
         setValue={setMotive}
+=======
+        onChangeMotive={setMotive}
+>>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
       />
 
       <SelectList
         label={'Preffered Units'}
         data={UnitData}
+<<<<<<< HEAD
         value={unit}
         setValue={setUnit}
 
         // onChangeUnit={setUnit}
+=======
+        onChangeUnit={setUnit}
+>>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
       />
 
       <SelectList
         label={'Gender'}
         data={GenderData}
         onChangeGender={setGender}
+<<<<<<< HEAD
         value={gender}
         setValue={setGender}
       />
 
       {/* <Text style={Styles.Title}></Text> */}
+=======
+      />
+
+      <Text style={Styles.Title}></Text>
+>>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
 
       <View style={Styles.fieldSet}>
         <Text style={Styles.legend}>Height</Text>
@@ -106,17 +141,24 @@ export default function Calculator() {
       <SelectList
         label={'Body Fat'}
         data={BodyFatData}
+<<<<<<< HEAD
         // onChangeFat={setFatPercent}
         value={fatPercent}
         setValue={setFatPercent}
+=======
+        onChangeFat={setFatPercent}
+>>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
       />
 
       <SelectList
         label={'Activity Level'}
         data={ActStrings}
         onChangeActivity={setActivityLvl}
+<<<<<<< HEAD
         value={activityLvl}
         setValue={setActivityLvl}
+=======
+>>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
       />
 
       <Pressable style={Styles.btn} onPress={() => {}}>
