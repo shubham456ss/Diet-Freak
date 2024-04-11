@@ -12,7 +12,14 @@ import {
 import React, {Component, useState} from 'react';
 import SelectList from '../components/SelectList';
 import {cuisineData} from './MainScreen';
-import {MotiveData,UnitData,GenderData,BodyFatData,Activity,ActStrings} from '../components/CalData';
+import {
+  MotiveData,
+  UnitData,
+  GenderData,
+  BodyFatData,
+  Activity,
+  ActStrings,
+} from '../components/CalData';
 
 export default function Calculator() {
   const [diet, setDiet] = useState(cuisineData);
@@ -27,82 +34,90 @@ export default function Calculator() {
   const [apiData, setApiData] = useState([]);
 
   return (
-      <View style={Styles.sectionContainer}>
-        <Text style={Styles.Title}> Calci</Text>
+    <View style={Styles.sectionContainer}>
+      <Text style={Styles.Title}> Calci</Text>
 
-        <SelectList label={'Current Diet'} data={cuisineData} onChangeDiet={setDiet} />
+      <SelectList
+        label={'Current Diet'}
+        data={cuisineData}
+        onChangeDiet={setDiet}
+      />
 
-        <SelectList
-          label={'I want to'}
-          data={MotiveData}
-          onChangeMotive={setMotive}
+      <SelectList
+        label={'I want to'}
+        data={MotiveData}
+        onChangeMotive={setMotive}
+      />
+
+      <SelectList
+        label={'Preffered Units'}
+        data={UnitData}
+        onChangeUnit={setUnit}
+      />
+
+      <SelectList
+        label={'Gender'}
+        data={GenderData}
+        onChangeGender={setGender}
+      />
+
+      <Text style={Styles.Title}></Text>
+
+      <View style={Styles.fieldSet}>
+        <Text style={Styles.legend}>Height</Text>
+        <TextInput
+          style={Styles.input}
+          search={false}
+          onChangeText={setHeight}
+          value={height}
+          placeholder="Calories"
+          labelboardType="numeric"
+          placeholderTextColor={'#0008'}
         />
-
-        <SelectList
-          label={'Preffered Units'}
-          data={UnitData}
-          onChangeUnit={setUnit}
-        />
-
-        <SelectList label={'Gender'} data={GenderData} onChangeGender={setGender} />
-
-        <Text style={Styles.Title}></Text>
-
-        <View style={Styles.fieldSet}>
-          <Text style={Styles.legend}>Height</Text>
-          <TextInput
-            style={Styles.input}
-            search={false}
-            onChangeText={setHeight}
-            value={height}
-            placeholder="Calories"
-            labelboardType="numeric"
-            placeholderTextColor={'#0008'}
-          />
-        </View>
-
-        <View style={Styles.fieldSet}>
-          <Text style={Styles.legend}>Weight</Text>
-          <TextInput
-            style={Styles.input}
-            search={false}
-            onChangeText={setWeight}
-            value={weight}
-            placeholder="Calories"
-            labelboardType="numeric"
-            placeholderTextColor={'#0008'}
-          />
-        </View>
-
-        <View style={Styles.fieldSet}>
-          <Text style={Styles.legend}>Age</Text>
-          <TextInput
-            style={Styles.input}
-            search={false}
-            onChangeText={setAge}
-            value={age}
-            placeholder="Calories"
-            labelboardType="numeric"
-            placeholderTextColor={'#0008'}
-          />
-        </View>
-
-        <SelectList
-          label={'Body Fat'}
-          data={BodyFatData}
-          onChangeFat={setFatPercent}
-        />
-
-        <SelectList
-          label={'Activity Level'}
-          data={ActStrings}
-          onChangeActivity={setActivityLvl}
-        /> 
-
-        <Pressable style={Styles.btn} onPress={() => {}}>
-          <Text style={Styles.btn.text}>Calculate</Text>
-        </Pressable>
       </View>
+
+      <View style={Styles.fieldSet}>
+        <Text style={Styles.legend}>Weight</Text>
+        <TextInput
+          style={Styles.input}
+          search={false}
+          onChangeText={setWeight}
+          value={weight}
+          placeholder="Calories"
+          labelboardType="numeric"
+          placeholderTextColor={'#0008'}
+        />
+      </View>
+
+      <View style={Styles.fieldSet}>
+        <Text style={Styles.legend}>Age</Text>
+        <TextInput
+          style={Styles.input}
+          search={false}
+          onChangeText={setAge}
+          value={age}
+          placeholder="Calories"
+          labelboardType="numeric"
+          placeholderTextColor={'#0008'}
+        />
+      </View>
+
+      <SelectList
+        label={'Body Fat'}
+        data={BodyFatData}
+        onChangeFat={setFatPercent}
+      />
+
+      <SelectList
+        label={'Activity Level'}
+        data={ActStrings}
+        onChangeActivity={setActivityLvl}
+      />
+
+      <Pressable style={Styles.btn} onPress={() => {}}>
+        <Text style={Styles.btn.text}>Calculate</Text>
+      </Pressable>
+    </View>
   );
 }
 

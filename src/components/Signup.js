@@ -1,3 +1,4 @@
+
 import {View, Text, Image, Alert} from 'react-native';
 import React from 'react';
 import {createStaticNavigation, useNavigation} from '@react-navigation/native';
@@ -14,7 +15,6 @@ const Signup = () => {
         style={{color: 'black', fontSize: 16}}
         onPress={() => {
           // console.warn('yooo');
-          
           navigation.navigate('Signupscreen');
         }}>
         Dont have a account?Sign up now!

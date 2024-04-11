@@ -1,9 +1,11 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
+
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
 
 const Main_button = ({fun, purp}) => {
   return (
-    
     <TouchableOpacity onPress={fun} style={styles.main}>
       <Text style={styles.tex}>{purp}</Text>
     </TouchableOpacity>
@@ -20,7 +22,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#396a55',
   },
   tex: {
-    color: 'white',
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
