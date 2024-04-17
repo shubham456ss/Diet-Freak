@@ -10,6 +10,7 @@ import { useContext } from 'react';
 const LogoutButton = () => {
   const {logout} = useContext(Newcontext)
   const navigation = useNavigation();
+  
   const out = ()=>{
     navigation.navigate('Loginscreen');
   }

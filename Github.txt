@@ -44,3 +44,4 @@ git remote set-url origin "github link"
 git remote -v
 git push -u origin master
 
+'react-native-reanimated/plugin',

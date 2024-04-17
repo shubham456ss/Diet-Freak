@@ -16,7 +16,6 @@ import LogoutButton from '../screens/Logout';
 
 const BottomTab = createBottomTabNavigator();
 
-<<<<<<< HEAD
 const TabRoutes = () => {
     return (
         <BottomTab.Navigator
@@ -33,50 +32,50 @@ const TabRoutes = () => {
         </BottomTab.Navigator>
 
     );
-=======
-export const TabRoutes = () => {
-  return (
-    <BottomTab.Navigator
-      tabBar={tabsProps => (
-        <>
-          <BottomTabBar {...tabsProps} />
-        </>
-      )}
-      initialRouteName="Home">
-      <BottomTab.Screen
-        name="Home"
-        component={MainScreen}
-        options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
-          ),
-        }}
-      />
-      <BottomTab.Screen
-        name="Calculator"
-        component={Calculator}
-        options={{
-          tabBarLabel: 'Calculate',
-          tabBarIcon: ({color, size}) => (
-            <MaterialIcons name="calculate" color={color} size={size} />
-          ),
-        }}
-      />
-      <BottomTab.Screen
-        name="Setting"
-        component={LogoutButton}
-        options={{
-          tabBarLabel: 'Setting',
-          tabBarIcon: ({color, size}) => (
-            <MaterialIcons name="settings" color={color} size={size} />
-          ),
-        }}
-      />
-    </BottomTab.Navigator>
-  );
->>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
+
 };
 
 
 export default TabRoutes;
+// export const TabRoutes = () => {
+//   return (
+//     <BottomTab.Navigator
+//       tabBar={tabsProps => (
+//         <>
+//           <BottomTabBar {...tabsProps} />
+//         </>
+//       )}
+//       initialRouteName="Home">
+//       <BottomTab.Screen
+//         name="Home"
+//         component={MainScreen}
+//         options={{
+//           tabBarLabel: 'Home',
+//           tabBarIcon: ({color, size}) => (
+//             <MaterialCommunityIcons name="home" color={color} size={size} />
+//           ),
+//         }}
+//       />
+//       <BottomTab.Screen
+//         name="Calculator"
+//         component={Calculator}
+//         options={{
+//           tabBarLabel: 'Calculate',
+//           tabBarIcon: ({color, size}) => (
+//             <MaterialIcons name="calculate" color={color} size={size} />
+//           ),
+//         }}
+//       />
+//       <BottomTab.Screen
+//         name="Setting"
+//         component={LogoutButton}
+//         options={{
+//           tabBarLabel: 'Setting',
+//           tabBarIcon: ({color, size}) => (
+//             <MaterialIcons name="settings" color={color} size={size} />
+//           ),
+//         }}
+//       />
+//     </BottomTab.Navigator>
+//   );
+

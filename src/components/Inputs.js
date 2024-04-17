@@ -25,15 +25,16 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: 10,
-    backgroundColor: '#a8ac73',
-    borderWidth: 0,
+    borderWidth: 1,
     borderRadius: 7,
+    borderColor: 'black',
+    borderStyle:'solid',
     paddingHorizontal: 10,
-    fontSize: 15,
-    color:'black',
-    // marginVertical: 10,
-
-    // color: 'black',
+    fontSize: 18,
+    fontWeight:'bold',
+    color: 'black',
+    letterSpacing: 1,
+    textDecorationLine:'none',
   },
 });
 

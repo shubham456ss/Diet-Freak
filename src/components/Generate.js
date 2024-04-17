@@ -1,9 +1,51 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable prettier/prettier */
 
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import { FlatList, StyleSheet, Text, View,Button, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
 
-function Generate({apiData, calorie}) {
+
+
+function Generate({ apiData, calorie }) {
+
+  console.log("apidatat---------->",apiData);
+
+  // const [apiResult, setApiResult] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+
+  const [ tempFilteredData , totalCalorie ] = filterDataByCalorie(apiData, calorie);
+  // setApiResult(pureData);
+
+  function filterDataByCalorie(){
+    let totalCalorie = 0;
+    const tempFilteredData = [];
+
+    for (let i = 0; i < apiData.length; i++) {
+      const nutrition = apiData[i].nutrition;
+      if (nutrition) {
+        const nutrients = nutrition.nutrients;
+        if (nutrients) {
+          const caloriesNutrient = nutrients.find(
+            (nutrient) => nutrient.name === 'Calories'
+          );
+          if (caloriesNutrient) {
+            totalCalorie += caloriesNutrient.amount;
+            if (totalCalorie <= calorie) {
+              tempFilteredData.push(apiData[i]);
+            } else {
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    return [ tempFilteredData , totalCalorie];
+  };
+
   const myItemSeparator = () => {
     return (
       <View
@@ -20,88 +62,69 @@ function Generate({apiData, calorie}) {
     );
   };
 
-  function knapsack(items, targetValue) {
-    // Shuffle the items randomly
-    // items.sort(() => Math.random() - 0.5);
+  const HeaderComponent = () => {
+     return (
+          <Text
+            style={{
+              fontSize: 30,
+              textAlign: 'center',
+              marginTop: 20,
+              fontWeight: 'bold',
+              textDecorationLine: 'underline',
+            }}>
+            List of Food
+          </Text>
+        )}
 
-    // Initialize matrix for dynamic programming
-    const dp = Array(items.length + 1)
-      .fill(null)
-      .map(() => Array(targetValue + 1).fill(0));
-
-    // Build DP matrix
-    for (let i = 1; i <= items.length; i++) {
-      for (let j = 1; j <= targetValue; j++) {
-        if (items[i - 1].value <= j) {
-          dp[i][j] = Math.max(
-            dp[i - 1][j],
-            dp[i - 1][j - items[i - 1].value] + items[i - 1].value,
-          );
-        } else {
-          dp[i][j] = dp[i - 1][j];
-        }
-      }
-    }
-
-    // Find the value closest to the target without exceeding it
-    let closestValue = 0;
-    for (let v = targetValue; v >= 0; v--) {
-      if (dp[items.length][v] <= targetValue) {
-        closestValue = dp[items.length][v];
-        break;
-      }
-    }
-
-    // Backtrack to find selected items
-    let selectedItems = [];
-    let i = items.length;
-    let j = closestValue;
-    while (i > 0 && j > 0) {
-      if (dp[i][j] !== dp[i - 1][j]) {
-        selectedItems.push(items[i - 1].name);
-        j -= items[i - 1].value;
-      }
-      i--;
-    }
-
-    return selectedItems.reverse();
-  }
-
-  // // Example usage:
-  // const apiResult = [
-  //   {key: 1, name: 'Item 1', value: 300},
-  //   {key: 2, name: 'Item 2', value: 200},
-  //   {key: 3, name: 'Item 3', value: 400},
-  //   {key: 4, name: 'Item 4', value: 600},
-  // ];
-
-  const selectedItems = knapsack(apiData, calorie);
+      // Example usage:
+      // const items = [
+      //     {
+      //         id: 1079930,
+      //         title: "Crock Pot Pasta Bolognese Sauce",
+      //     nutrition: {
+      //           name:"yello",
+      //             nutrients: [
+      //                 { name: "Calories", amount: 174.105, unit: "kcal" },
+      //             ]
+      //         }
+      //     },
+      // ];
 
   return (
-    <FlatList
-      data={selectedItems}
-      renderItem={({item}) => (
-        <>
-          <Text>{item.name}</Text>
-          <Text style={styles.item}>{item.value}</Text>
-        </>
-      )}
-      keyExtractor={item => item.key}
-      ItemSeparatorComponent={myItemSeparator}
-      ListEmptyComponent={myListEmpty}
-      ListHeaderComponent={() => (
-        <Text
-          style={{
-            fontSize: 30,
-            textAlign: 'center',
-            marginTop: 20,
-            fontWeight: 'bold',
-            textDecorationLine: 'underline',
-          }}>
-          List of Food
-        </Text>
-      )}
-    />
+    // <ScrollView contentInsetAdjustmentBehavior='automatic'>
+        <FlatList scrollEnabled={true} scrollsToTop={true}
+        data={tempFilteredData}
+        renderItem={({item}) => (
+          <View>
+            {/* <Image
+        source={{
+          uri: item.image,
+        }}
+      /> */}
+            <Text >{tempFilteredData.length}</Text>
+            
+            <Text >{item.title}</Text>
+            <Text style={styles.item}>{item.nutrition.nutrients.find(nutrient => nutrient.name === "Calories").name}</Text>
+          </View>
+        )}
+        keyExtractor={item => item.id}
+        ItemSeparatorComponent={myItemSeparator}
+        ListEmptyComponent={myListEmpty}
+        ListHeaderComponent={HeaderComponent}
+      />
+    // </ScrollView>
+    
+    //  <View>
+  
+    //   <Text>Data from API:</Text>
+    //   {tempFilteredData.map((item, index) => (
+    //     <View key={index}>
+    //       <Text>Title: {item.title}</Text>
+    //       <Text>Calories: {item.nutrition.nutrients.find(nutrient => nutrient.name === "Calories").amount}</Text>
+    //     </View>
+    //   ))}
+    //   <Text>Total Calorie: {totalCalorie}</Text>
+    // </View>
   );
 }
 
@@ -118,3 +141,53 @@ const styles = StyleSheet.create({
   },
 });
 export default Generate;
+
+ // return (
+    
+  //  <FlatList 
+  //       data={filteredData}
+  //       renderItem={({item}) => (
+  //         <>
+  //           <Text >{item.title}</Text>
+  //           <Text style={styles.item}>{item.nutrition.nutrients[0].name}</Text>
+  //         </>
+  //       )}
+  //       keyExtractor={item => item.id}
+  //       ItemSeparatorComponent={myItemSeparator}
+  //       ListEmptyComponent={myListEmpty}
+  //       ListHeaderComponent={HeaderComponent}
+  //     />
+  
+  
+  
+  
+  
+  // const myItemSeparator = () => {
+  //   return (
+  //     <View
+  //       style={{height: 1, backgroundColor: 'grey', marginHorizontal: 10}}
+  //     />
+  //   );
+  // };
+
+  // const myListEmpty = () => {
+  //   return (
+  //     <View style={{alignItems: 'center'}}>
+  //       <Text style={styles.item}>No data found</Text>
+  //     </View>
+  //   );
+  // };
+
+  // const HeaderComponent = () => {
+  //    return (
+  //         <Text
+  //           style={{
+  //             fontSize: 30,
+  //             textAlign: 'center',
+  //             marginTop: 20,
+  //             fontWeight: 'bold',
+  //             textDecorationLine: 'underline',
+  //           }}>
+  //           List of Food
+  //         </Text>
+  //       )}

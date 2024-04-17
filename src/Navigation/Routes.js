@@ -15,17 +15,17 @@ const Stack = createStackNavigator();
 
 export default function Routes() {
     const [no, setNo] = useState(null);
-    const [userData,setUserData] = useState(null);
+    const [userData,setUserData] = useState(true);
 
     // useEffect(() => {
     //    getData();
     //   }, [no,userData]);
       
-     async function getData (){
-          const data = await AsyncStorage.getItem('userData');
-          const userdata = JSON.parse(data);
-          setUserData(userdata);
-        }
+    //  async function getData (){
+    //       const data = await AsyncStorage.getItem('userData');
+    //       const userdata = JSON.parse(data);
+    //       setUserData(userdata);
+    //     }
 
     return (
         <NavigationContainer>

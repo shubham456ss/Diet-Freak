@@ -26,13 +26,14 @@ export const Activity = [
     Very_Active: 1.725,
     Extreme_Active: 1.9,
   },
+  
 ];
-export const ActStrings = [
-  {key: '1', label: 'Sedenatry', value: 'Sedenatry'},
-  {key: '2', label: 'Light', value: 'Light'},
-  {key: '3', label: 'Moderate', value: 'Moderate'},
-  {key: '4', label: 'Very_Active', value: 'Very_Active'},
-  {key: '5', label: 'Extreme_Active', value: 'Extreme_Active'},
+export const ActString = [
+  {key: '1', label: 'Sedenatry', value: 1.2},
+  {key: '2', label: 'Light', value: 1.375},
+  {key: '3', label: 'Moderate', value: 1.465},
+  {key: '4', label: 'Very_Active', value: 1.725},
+  {key: '5', label: 'Extreme_Active', value: 1.9},
 ];
 
 export const Cuisine_Data = [

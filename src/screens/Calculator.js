@@ -9,24 +9,14 @@ import {
   Pressable,
   StyleSheet,
 } from 'react-native';
-import React, {Component, useState} from 'react';
+
+import React, {useState} from 'react';
 import SelectList from '../components/SelectList';
-<<<<<<< HEAD
-// import {cuisineData} from './MainScreen';
-import {Cuisine_Data,MotiveData,UnitData,GenderData,BodyFatData,Activity,ActStrings} from '../components/CalData';
-=======
-import {cuisineData} from './MainScreen';
-import {
-  MotiveData,
-  UnitData,
-  GenderData,
-  BodyFatData,
-  Activity,
-  ActStrings,
-} from '../components/CalData';
->>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
+import ShowModal from '../components/Modal';
+import {Cuisine_Data,MotiveData,UnitData,GenderData,BodyFatData,ActString} from '../components/CalData';
 
 export default function Calculator() {
+
   const [diet, setDiet] = useState(Cuisine_Data);
   const [motive, setMotive] = useState(MotiveData);
   const [fatPercent, setFatPercent] = useState(BodyFatData);
@@ -35,69 +25,89 @@ export default function Calculator() {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [age, setAge] = useState('');
-  const [activityLvl, setActivityLvl] = useState(ActStrings);
-  const [apiData, setApiData] = useState([]);
+  const [activityLvl, setActivityLvl] = useState(ActString);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [result, setResult] = useState(0);
+
+
+  function calorieCal() {
+    let ans = 10 * parseFloat(weight) + 6.25 * parseFloat(height) - 5.0 * parseFloat(age);
+
+    if (gender === "Male") {
+       ans += 5;
+    } else {
+      ans -= 161;
+    }
+    setResult(ans);
+    console.log(ans);
+    setModalVisible(true);
+  }
+
+  function chart() {
+
+    switch (activityLvl) {
+
+      case ActString[0].value:
+        return result * ActString[0].value;
+
+      case ActString[1].value:
+        return result * ActString[1].value;
+
+      case ActString[2].value:
+        return result * ActString[2].value;
+
+      case ActString[3].value:
+        return result * ActString[3].value;
+
+      case ActString[4].value:
+        return result * ActString[4].value;
+
+      default:
+        break;
+    }
+
+    let ans = result * 0.8;
+    setResult(ans);
+
+  }
+
+  function showResult() {
+
+    
+
+  }
+
 
   return (
     <View style={Styles.sectionContainer}>
-<<<<<<< HEAD
-      <SelectList
+
+      {/* <SelectList
         label={'Current Diet'}
         data={Cuisine_Data}
         value={diet}
         setValue={setDiet}
-
-        // onChangeDiet={setDiet}
-=======
-      <Text style={Styles.Title}> Calci</Text>
-
-      <SelectList
-        label={'Current Diet'}
-        data={cuisineData}
-        onChangeDiet={setDiet}
->>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
       />
 
       <SelectList
         label={'I want to'}
         data={MotiveData}
-<<<<<<< HEAD
-        // onChangeMotive={setMotive}
         value={motive}
         setValue={setMotive}
-=======
-        onChangeMotive={setMotive}
->>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
-      />
+      /> */}
 
       <SelectList
         label={'Preffered Units'}
         data={UnitData}
-<<<<<<< HEAD
         value={unit}
         setValue={setUnit}
-
-        // onChangeUnit={setUnit}
-=======
-        onChangeUnit={setUnit}
->>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
       />
 
       <SelectList
         label={'Gender'}
         data={GenderData}
-        onChangeGender={setGender}
-<<<<<<< HEAD
         value={gender}
         setValue={setGender}
       />
-
-      {/* <Text style={Styles.Title}></Text> */}
-=======
-      />
-
-      <Text style={Styles.Title}></Text>
->>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
 
       <View style={Styles.fieldSet}>
         <Text style={Styles.legend}>Height</Text>
@@ -106,7 +116,7 @@ export default function Calculator() {
           search={false}
           onChangeText={setHeight}
           value={height}
-          placeholder="Calories"
+          placeholder="in cm"
           labelboardType="numeric"
           placeholderTextColor={'#0008'}
         />
@@ -119,7 +129,7 @@ export default function Calculator() {
           search={false}
           onChangeText={setWeight}
           value={weight}
-          placeholder="Calories"
+          placeholder="in kg"
           labelboardType="numeric"
           placeholderTextColor={'#0008'}
         />
@@ -132,38 +142,30 @@ export default function Calculator() {
           search={false}
           onChangeText={setAge}
           value={age}
-          placeholder="Calories"
           labelboardType="numeric"
           placeholderTextColor={'#0008'}
         />
       </View>
 
-      <SelectList
+      {/* <SelectList
         label={'Body Fat'}
         data={BodyFatData}
-<<<<<<< HEAD
-        // onChangeFat={setFatPercent}
         value={fatPercent}
         setValue={setFatPercent}
-=======
-        onChangeFat={setFatPercent}
->>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
-      />
+      /> */}
 
       <SelectList
         label={'Activity Level'}
-        data={ActStrings}
-        onChangeActivity={setActivityLvl}
-<<<<<<< HEAD
+        data={ActString}
         value={activityLvl}
         setValue={setActivityLvl}
-=======
->>>>>>> 8b2ebdd303a4187fcf81c792ade5ebd31eacb4f1
       />
 
-      <Pressable style={Styles.btn} onPress={() => {}}>
+      <Pressable style={Styles.btn} onPress={calorieCal}>
         <Text style={Styles.btn.text}>Calculate</Text>
       </Pressable>
+
+      <ShowModal modalVisible={modalVisible} setModalVisible={setModalVisible} result={result } />
     </View>
   );
 }
@@ -171,11 +173,9 @@ export default function Calculator() {
 const Styles = StyleSheet.create({
   sectionContainer: {
     flex: 1,
-    gap:20,
-    padding:20,
+    gap: 20,
+    padding: 20,
     justifyContent: 'space-between',
-
-    // alignItems:'center',
   },
   Title: {
     fontSize: 18,
@@ -206,14 +206,15 @@ const Styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   legend: {
- 
+    color:'black',
     position: 'absolute',
     top: -10,
     left: 10,
-    backgroundColor: 'white',
-    paddingHorizontal: 8,
-    zIndex: 999,
+    backgroundColor: '#f8f4f4',
+    paddingHorizontal: 3,
+    zIndex: 99,
     fontSize: 14,
+    letterSpacing:1,
   },
   btn: {
     marginTop: 20,
