@@ -23,7 +23,7 @@ const SelectList = ({label,data,value,setValue}) => {
     <View style={styles.container}>
       {renderLabel()}
       <Dropdown
-        style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+        style={[styles.dropdown, isFocus && { borderColor: 'blue' ,color:'black' }]}
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}
@@ -42,7 +42,7 @@ const SelectList = ({label,data,value,setValue}) => {
           setValue(item.value);
           setIsFocus(false);
         }}
-        renderLeftIcon={() =>{}}
+        renderLeftIcon={() => {}}
       />
     </View>
   );
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   label: {
-    letterSpacing:1,
-    color:'black',
+    letterSpacing: 1,
+    color: 'black',
     position: 'absolute',
     backgroundColor: '#f8f4f4',
     left: 10,
@@ -74,14 +74,16 @@ const styles = StyleSheet.create({
     zIndex: 999,
     paddingHorizontal: 3,
     fontSize: 14,
-    fontWeight:500,
-    borderRadius:20,
+    fontWeight: 500,
+    borderRadius: 20,
   },
   placeholderStyle: {
     fontSize: 16,
+    // color: 'black',
   },
   selectedTextStyle: {
     fontSize: 16,
+    color: 'black',
   },
   iconStyle: {
     width: 20,

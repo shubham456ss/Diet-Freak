@@ -15,6 +15,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import Calculator from '../screens/Calculator';
 import LogoutButton from '../screens/Logout';
 import About from '../screens/About';
+import { ScrollView } from 'react-native';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -42,6 +43,7 @@ export const TabRoutes = () => {
           borderTopLeftRadius: 40,
         },
       }}>
+      
       <BottomTab.Screen
         name="Home"
         component={MainScreen}
