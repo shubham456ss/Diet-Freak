@@ -6,15 +6,18 @@ import React from 'react';
 const Inputs = ({placeholderE, placeholderP ,email,setemail ,pass,setpass}) => {
   return (
     <View style={styles.main}>
-      <TextInput placeholder={placeholderE} style={styles.input}
-      value={email}
-      onChangeText={text =>setemail(text)}
-      ></TextInput>
       <TextInput
+        placeholderTextColor="rgba(128, 128, 128, 0.5)"
+        placeholder={placeholderE}
+        style={styles.input}
+        value={email}
+        onChangeText={text => setemail(text)}></TextInput>
+      <TextInput
+        placeholderTextColor="rgba(128, 128, 128, 0.5)"
         placeholder={placeholderP}
         style={styles.input}
         value={pass}
-        onChangeText={text =>setpass(text)}
+        onChangeText={text => setpass(text)}
         secureTextEntry></TextInput>
     </View>
   );

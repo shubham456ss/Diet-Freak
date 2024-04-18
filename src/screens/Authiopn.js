@@ -1,6 +1,6 @@
-/* eslint-disable semi *//* eslint-disable prettier/prettier */
+/* eslint-disable semi */ /* eslint-disable prettier/prettier */
 
-import {createContext, useState} from 'react';
+import {createContext, useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Newcontext = createContext();
@@ -8,17 +8,18 @@ export const Newcontext = createContext();
 export const Contextmain = ({children}) => {
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
-  const [usertoken,setusertoken] = useState(null);
- 
+  const [usertoken, setusertoken] = useState(null);
+  const [name, setname] = useState('');
 
-  const loggin = ()=>{
+  const loggin = () => {
     setusertoken('wel');
-    AsyncStorage.setItem('usertoken' , 'wel');
+    AsyncStorage.setItem('usertoken', 'wel');
   };
   const logout = () => {
-   AsyncStorage.removeItem('usertoken');
-   setusertoken(null);
- };
+    AsyncStorage.removeItem('usertoken');
+    setusertoken(null);
+  };
+
   const isLoggedin = async () => {
     try {
       let user = await AsyncStorage.getItem('usertoken');
@@ -27,12 +28,58 @@ export const Contextmain = ({children}) => {
       console.log(error);
     }
   };
+  const saveName = async username => {
+    try {
+      await AsyncStorage.setItem('name', username);
+      setname(username);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Function to save email in AsyncStorage
+  const saveEmail = async useremail => {
+    try {
+      await AsyncStorage.setItem('email', useremail);
+      setemail(useremail);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    // Check if user is logged in
     isLoggedin();
 
+    // Load name from AsyncStorage
+    AsyncStorage.getItem('name').then(storedName => {
+      if (storedName) {
+        setname(storedName);
+      }
+    });
+    // Load email from AsyncStorage
+    AsyncStorage.getItem('email').then(storedEmail => {
+      if (storedEmail) {
+        setemail(storedEmail);
+      }
+    });
+  }, []);
+
   return (
-    <Newcontext.Provider value={{email, setemail, password, setpassword,loggin,logout,usertoken}}>
+    <Newcontext.Provider
+      value={{
+        email,
+        setemail:saveEmail,
+        password,
+        setpassword,
+        loggin,
+        logout,
+        usertoken,
+        name,
+        setname:saveName,
+      
+      }}>
       {children}
     </Newcontext.Provider>
   );
 };
-
