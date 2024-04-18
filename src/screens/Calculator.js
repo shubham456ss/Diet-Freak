@@ -13,87 +13,124 @@ import {
 import React, {useState} from 'react';
 import SelectList from '../components/SelectList';
 import ShowModal from '../components/Modal';
-import {Cuisine_Data,MotiveData,UnitData,GenderData,BodyFatData,ActString} from '../components/CalData';
+import {
+  Cuisine_Data,
+  MotiveData,
+  UnitData,
+  GenderData,
+  BodyFatData,
+  Activity,
+} from '../components/CalData';
 
 export default function Calculator() {
-
   const [diet, setDiet] = useState(Cuisine_Data);
   const [motive, setMotive] = useState(MotiveData);
-  const [fatPercent, setFatPercent] = useState(BodyFatData);
+  // const [fatPercent, setFatPercent] = useState(BodyFatData);
   const [unit, setUnit] = useState(UnitData);
   const [gender, setGender] = useState(GenderData);
   const [height, setHeight] = useState('');
+  const [inch, setInch] = useState('');
   const [weight, setWeight] = useState('');
   const [age, setAge] = useState('');
-  const [activityLvl, setActivityLvl] = useState(ActString);
+  const [activityLvl, setActivityLvl] = useState(Activity);
   const [modalVisible, setModalVisible] = useState(false);
   const [result, setResult] = useState(0);
+  const [actResult, setActResult] = useState(0);
+  const [motiveResult, setMotiveResult] = useState(0);
 
+  function showCalorie() {
+    let ans =
+      10 * parseFloat(weight) +
+      6.25 * parseFloat(height) -
+      5.0 * parseFloat(age);
 
-  function calorieCal() {
-    let ans = 10 * parseFloat(weight) + 6.25 * parseFloat(height) - 5.0 * parseFloat(age);
-
-    if (gender === "Male") {
-       ans += 5;
+    if (gender === 'Male') {
+      ans += 5;
     } else {
       ans -= 161;
     }
+    
+    activityLevel();
+    motivation();
+    if (motive === 'US-Standard') {
+        convertToUS(); 
+    }
     setResult(ans);
-    console.log(ans);
+ 
     setModalVisible(true);
   }
 
-  function chart() {
+  function convertToUS() {
 
+    if (inch >= 12) {
+      setHeight(height + 1);
+    }
+    else {
+     setHeight(height*12+inch); //cm
+      console.log(height);
+    }
+  }
+
+  function activityLevel() {
+
+    let act;
     switch (activityLvl) {
+      case Activity[0].value:
+        act = result * Activity[0].value;
+        break;
 
-      case ActString[0].value:
-        return result * ActString[0].value;
+      case Activity[1].value:
+        act = result * Activity[1].value;
+        break;
 
-      case ActString[1].value:
-        return result * ActString[1].value;
+      case Activity[2].value:
+        act = result * Activity[2].value;
+        break;
 
-      case ActString[2].value:
-        return result * ActString[2].value;
-
-      case ActString[3].value:
-        return result * ActString[3].value;
-
-      case ActString[4].value:
-        return result * ActString[4].value;
+      case Activity[3].value:
+        act = result * Activity[3].value;
+        break;
+      case Activity[4].value:
+        act = result * Activity[4].value;
+        break;
 
       default:
         break;
     }
-
-    let ans = result * 0.8;
-    setResult(ans);
-
+    setActResult(act);
   }
 
-  function showResult() {
+  function motivation() {
+    let actAns;
 
-    
+    switch (motive) {
+      case MotiveData[0].value:
+        actAns = actResult * 0.5;
+        break;
 
+      case MotiveData[1].value:
+        actAns = actResult;
+        break;
+
+      case MotiveData[2].value:
+        actAns = actResult * 0.6;
+        break;
+
+      default:
+        break;
+    }
+    setMotiveResult(actAns);
   }
-
 
   return (
     <View style={Styles.sectionContainer}>
-
-      {/* <SelectList
-        label={'Current Diet'}
-        data={Cuisine_Data}
-        value={diet}
-        setValue={setDiet}
-      />
 
       <SelectList
         label={'I want to'}
         data={MotiveData}
         value={motive}
         setValue={setMotive}
-      /> */}
+      />
 
       <SelectList
         label={'Preffered Units'}
@@ -111,22 +148,42 @@ export default function Calculator() {
 
       <View style={Styles.fieldSet}>
         <Text style={Styles.legend}>Height</Text>
-        <TextInput
-          style={Styles.input}
-          search={false}
-          onChangeText={setHeight}
-          value={height}
-          placeholder="in cm"
-          labelboardType="numeric"
-          placeholderTextColor={'#0008'}
-        />
+        {unit === 'US-Standard' ? (
+          <View >
+            <TextInput
+              onChangeText={setHeight}
+              value={height}
+              placeholder="Feet"
+              labelboardType="numeric"
+              placeholderTextColor={'#0008'}
+            />
+
+            <View style={{borderTopWidth: 1, borderTopColor: '#acacae'}}>
+              <TextInput
+                onChangeText={setInch}
+                value={inch}
+                placeholder=" Inch"
+                labelboardType="numeric"
+                placeholderTextColor={'#0008'}
+              />
+            </View>
+          </View>
+        ) : (
+          <TextInput
+            style={Styles.input}
+            onChangeText={setHeight}
+            value={height}
+            placeholder="cm"
+            labelboardType="numeric"
+            placeholderTextColor={'#0008'}
+          />
+        )}
       </View>
 
       <View style={Styles.fieldSet}>
         <Text style={Styles.legend}>Weight</Text>
         <TextInput
           style={Styles.input}
-          search={false}
           onChangeText={setWeight}
           value={weight}
           placeholder="in kg"
@@ -139,7 +196,6 @@ export default function Calculator() {
         <Text style={Styles.legend}>Age</Text>
         <TextInput
           style={Styles.input}
-          search={false}
           onChangeText={setAge}
           value={age}
           labelboardType="numeric"
@@ -156,16 +212,20 @@ export default function Calculator() {
 
       <SelectList
         label={'Activity Level'}
-        data={ActString}
+        data={Activity}
         value={activityLvl}
         setValue={setActivityLvl}
       />
 
-      <Pressable style={Styles.btn} onPress={calorieCal}>
+      <Pressable style={Styles.btn} onPress={showCalorie}>
         <Text style={Styles.btn.text}>Calculate</Text>
       </Pressable>
 
-      <ShowModal modalVisible={modalVisible} setModalVisible={setModalVisible} result={result } />
+      <ShowModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        allResult={[result, actResult, motiveResult, motive]}
+      />
     </View>
   );
 }
@@ -199,14 +259,13 @@ const Styles = StyleSheet.create({
     fontSize: 15,
   },
   fieldSet: {
-    // marginBottom: 20,
     borderRadius: 8,
     borderWidth: 0.6,
     borderColor: '#acacad',
     backgroundColor: '#fff',
   },
   legend: {
-    color:'black',
+    color: 'black',
     position: 'absolute',
     top: -10,
     left: 10,
@@ -214,7 +273,7 @@ const Styles = StyleSheet.create({
     paddingHorizontal: 3,
     zIndex: 99,
     fontSize: 14,
-    letterSpacing:1,
+    letterSpacing: 1,
   },
   btn: {
     marginTop: 20,

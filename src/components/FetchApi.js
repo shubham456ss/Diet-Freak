@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import axios from "axios";
 import { API_KEY, API_HOST } from '@env';
 
 
 export default async function fetchApi(url) {
-
    try {
      const response = await axios.get(url, {
        headers: {
@@ -18,5 +18,6 @@ export default async function fetchApi(url) {
 
    } catch (error) {
      console.log(error);
-   }
+  }
+
  }

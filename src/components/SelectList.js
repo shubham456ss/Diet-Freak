@@ -29,7 +29,7 @@ const SelectList = ({label,data,value,setValue}) => {
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
         data={data}
-        search
+        search={false}
         maxHeight={300}
         labelField="label"
         valueField="value"

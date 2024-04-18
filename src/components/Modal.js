@@ -1,23 +1,24 @@
 import React from 'react';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 
-const ShowModal = ({modalVisible,setModalVisible,result}) => {
+const ShowModal = ({modalVisible, setModalVisible, allResult}) => {
+  const [result, actResult, motiveResult, motive] = allResult;
 
   return (
-    <View style={styles.centeredView} >
+    <View style={styles.centeredView}>
       <Modal
-        animationType="slide"
+        animationType="none"
         transparent={true}
-              visible={modalVisible}
-
-              onRequestClose={() => {
+        visible={modalVisible}
+        onRequestClose={() => {
           Alert.alert('Modal has been closed.');
           setModalVisible(!modalVisible);
-              }}
-          >
+        }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>{ result}</Text>
+            <Text style={styles.modalText}>{`Basic Metabolic Rate : ${parseInt(result)}`}</Text>
+            <Text  style={styles.modalText}>{`your calorie as per activity : ${parseInt(actResult)}`}</Text>
+            <Text style={styles.modalText}>{`Calorie needed to ${motive} weight : ${parseInt(motiveResult)}`}</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>
@@ -52,8 +53,8 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-    button: {
-      paddingHorizontal:20,
+  button: {
+    paddingHorizontal: 20,
     borderRadius: 20,
     padding: 10,
     elevation: 5,
@@ -71,8 +72,8 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
-      textAlign: 'center',
-    fontWeight:'bold',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 });
 

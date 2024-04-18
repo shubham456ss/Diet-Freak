@@ -61,7 +61,6 @@ const Loginscreen = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-
     padding: 20,
     alignItems: 'center',
     justifyContent: 'center',
