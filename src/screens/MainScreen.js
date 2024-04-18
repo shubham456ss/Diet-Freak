@@ -1,7 +1,7 @@
 /* eslint-disable quotes */ /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Pressable,
   SafeAreaView,
@@ -11,87 +11,81 @@ import {
   View,
 } from 'react-native';
 import SelectList from '../components/SelectList';
-import Generate from "../components/Generate";
+import Generate from '../components/Generate';
 import fetchApi from '../components/FetchApi';
-import { API_URL } from '@env';
+import {API_URL} from '@env';
 import ModalList from '../components/ModalList';
-import {
-  Cuisine_Data,
-  Diet_Data,
-  Meal_Data
-} from '../components/CalData';
+import {Cuisine_Data, Diet_Data, Meal_Data} from '../components/CalData';
+import { ScrollView } from 'react-native-gesture-handler';
 
 function MainScreen() {
-
   const [calorie, setCalorie] = useState('');
   const [cuisine, setCusine] = useState(Cuisine_Data);
   const [diet, setDiet] = useState(Diet_Data);
   const [apiData, setApiData] = useState([]);
-   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const url = `${API_URL}?diet=${diet}&maxCalories=${calorie}&cuisine=${cuisine}`;
 
   async function GenerateData() {
-      const results = await fetchApi(url);
-      setApiData(results);
+    const results = await fetchApi(url);
+    setApiData(results);
   }
 
   return (
-    <SafeAreaView>
-      <View style={Styles.sectionContainer}>
-        <SelectList
-          label={'Food Type'}
-          data={Diet_Data}
-          value={diet}
-          setValue={setDiet}
-        />
-
-        <View style={Styles.fieldSet}>
-          <Text style={Styles.legend}>I want to eat</Text>
-          <TextInput
-            style={Styles.input}
-            search={false}
-            onChangeText={setCalorie}
-            value={calorie}
-            placeholder="Calories"
-            labelboardType="numeric"
-            placeholderTextColor={'#0008'}
+      <SafeAreaView>
+        <View style={Styles.sectionContainer}>
+          <SelectList
+            label={'Food Type'}
+            data={Diet_Data}
+            value={diet}
+            setValue={setDiet}
           />
-        </View>
 
-        <SelectList
-          label={'Cuisine'}
-          data={Cuisine_Data}
-          value={cuisine}
-          setValue={setCusine}
-        />
+          <View style={Styles.fieldSet}>
+            <Text style={Styles.legend}>I want to eat</Text>
+            <TextInput
+              style={Styles.input}
+              search={false}
+              onChangeText={setCalorie}
+              value={calorie}
+              placeholder="Calories"
+              labelboardType="numeric"
+              placeholderTextColor={'#0008'}
+            />
+          </View>
 
-        <Pressable style={Styles.btn} onPress={GenerateData}>
-          <Text style={Styles.btn.text}>Generate</Text>
-        </Pressable>
+          <SelectList
+            label={'Cuisine'}
+            data={Cuisine_Data}
+            value={cuisine}
+            setValue={setCusine}
+          />
 
-        
+          <Pressable style={Styles.btn} onPress={GenerateData}>
+            <Text style={Styles.btn.text}>Generate</Text>
+          </Pressable>
 
-        <Generate apiData={apiData} calorie={parseFloat(calorie)} />
+          <Generate apiData={apiData} calorie={parseFloat(calorie)} />
 
-        {/* <ModalList 
+          {/* <ModalList 
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
           apiData={apiData}
           calorie={parseFloat(calorie)}
         /> */}
-      </View>
-    </SafeAreaView>
+        </View>
+      </SafeAreaView>
   );
 }
 
 const Styles = StyleSheet.create({
   sectionContainer: {
-    flexDirection:'column',
-    marginTop:20,
+    flexDirection: 'column',
+    marginTop: 20,
     paddingHorizontal: 20,
-    gap:10,
-    justifyContent:'space-between',
+    gap: 10,
+    justifyContent: 'space-between',
   },
   Title: {
     fontSize: 18,
@@ -114,6 +108,7 @@ const Styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 10,
     fontSize: 15,
+    color:'black',
   },
   fieldSet: {
     borderRadius: 8,
@@ -146,6 +141,3 @@ const Styles = StyleSheet.create({
 });
 
 export default MainScreen;
-
-
-

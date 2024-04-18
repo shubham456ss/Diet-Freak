@@ -11,7 +11,7 @@ const Profile = () => {
           <Image
             style={styles.avatar}
             source={{
-              uri: 'https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg',
+              uri: 'https://as1.ftcdn.net/v2/jpg/01/03/15/44/1000_F_103154410_fYWuEf2HuAAYZoAZrCy1zLJtQYz9DC3i.jpg',
             }}
           />
           <Text style={styles.username}>{name}</Text>

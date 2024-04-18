@@ -9,9 +9,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   Image,
   TouchableOpacity,
+  ScrollView,
+  SafeAreaView,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 
@@ -107,6 +108,7 @@ function Generate({apiData, calorie}) {
 
   return (
     <FlatList
+      nestedScrollEnabled
       data={tempFilteredData}
       renderItem={({item}) => (
         <View
@@ -115,7 +117,9 @@ function Generate({apiData, calorie}) {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#ddffff',
+            backgroundColor: 'lightgrey',
+            borderRadius: 10,
+            marginTop: 8,
           }}>
           <Image
             height={70}
@@ -125,9 +129,17 @@ function Generate({apiData, calorie}) {
             }}
             borderRadius={5}
           />
-          <View style={{flex: 1, margin: 5}}>
+          <View
+            style={{
+              flex: 1,
+              margin: 5,
+              height: 70,
+              padding: 10,
+              justifyContent: 'center',
+            }}>
             <Text style={styles.text}>{item.title}</Text>
             <Text style={styles.item}>
+              Calories:
               {
                 item.nutrition.nutrients.find(
                   nutrient => nutrient.name === 'Calories',
@@ -152,14 +164,17 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   item: {
-    padding: 20,
     marginTop: 5,
     fontSize: 15,
+    fontWeight: '900',
+    color: 'grey',
   },
   text: {
+    color: 'black',
     fontSize: 15,
     fontFamily: 'popins',
     flexWrap: 'nowrap',
+    fontWeight: 'bold',
   },
   flat: {
     flex: 1,
