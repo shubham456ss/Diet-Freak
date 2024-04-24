@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {View, StyleSheet, Image, Text, TextInput} from 'react-native';
-import React, {useContext} from 'react';
+import React, {useContext,useState} from 'react';
 import Main_button from '../components/Login';
 import Inputs from '../components/Inputs';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
@@ -10,19 +10,24 @@ import {firebase_auth} from '../../firebase';
 
 const Signupscreen = () => {
   const auth = firebase_auth;
-  const {email, setemail, password, setpassword, name, setname} =
-    useContext(Newcontext);
-
+  const {email, setEmail, password, setPassword, name, setName,saveName} = useContext(Newcontext);
+  const [userName, setUserName] = useState('');
   const navigation = useNavigation();
   const onsignup = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log(user.email);
+        setUserName('');
+        saveName();
         alert('Success! You have successfully signed up');
         navigation.navigate('Loginscreen');
       })
-      .catch(error => alert(error.message));
+      .catch(error => {
+        alert(error.message);
+      });
+    
+    
   };
 
   return (
@@ -35,16 +40,19 @@ const Signupscreen = () => {
         style={styles.txt}
         placeholder="Enter Your Name"
         placeholderTextColor="rgba(128, 128, 128, 0.5)"
-        value={name}
-        onChangeText={text => setname(text)}
+        value={userName}
+        onChangeText={text => {
+          setUserName(text);
+          setName(text);
+        }}
       />
       <Inputs
         placeholderE="Enter your Email"
         placeholderP="Enter Your Password"
         email={email}
-        setemail={setemail}
+        setEmail={setEmail}
         pass={password}
-        setpass={setpassword}
+        setPass={setPassword}
       />
 
       <Main_button purp="Sign up" fun={onsignup} />
@@ -62,7 +70,6 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
     justifyContent: 'center',
-
     backgroundColor: '#fef68d',
   },
   footer: {

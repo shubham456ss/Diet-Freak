@@ -1,9 +1,9 @@
+/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/self-closing-comp *//* eslint-disable prettier/prettier */
 
-import {View, Text, TextInput, StyleSheet} from 'react-native';
-import React from 'react';
+import {View, TextInput, StyleSheet} from 'react-native';
 
-const Inputs = ({placeholderE, placeholderP ,email,setemail ,pass,setpass}) => {
+const Inputs = ({placeholderE, placeholderP ,email,setEmail ,pass,setPass}) => {
   return (
     <View style={styles.main}>
       <TextInput
@@ -11,14 +11,16 @@ const Inputs = ({placeholderE, placeholderP ,email,setemail ,pass,setpass}) => {
         placeholder={placeholderE}
         style={styles.input}
         value={email}
-        onChangeText={text => setemail(text)}></TextInput>
+        onChangeText={text=>setEmail(text)}></TextInput>
+      
       <TextInput
         placeholderTextColor="rgba(128, 128, 128, 0.5)"
         placeholder={placeholderP}
         style={styles.input}
         value={pass}
-        onChangeText={text => setpass(text)}
-        secureTextEntry></TextInput>
+        onChangeText={setPass}
+        secureTextEntry>
+        </TextInput>
     </View>
   );
 };

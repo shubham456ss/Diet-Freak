@@ -151,7 +151,7 @@ export default function Calculator() {
         {unit === 'US-Standard' ? (
           <View >
             <TextInput
-              onChangeText={setHeight}
+              // onChangeText={setHeight}
               value={height}
               placeholder="Feet"
               labelboardType="numeric"

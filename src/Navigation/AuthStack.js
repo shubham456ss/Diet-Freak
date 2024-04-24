@@ -6,7 +6,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Signupscreen from '../screens/Signupscreen';
 import LogoutButton from '../screens/Logout';
 import Loginscreen from '../screens/Loginscreen';
-import TabRoutes from './TabRoutes';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +16,7 @@ const Authstack = () => {
       initialRouteName="Loginscreen">
       <Stack.Screen name="Loginscreen" component={Loginscreen} />
       <Stack.Screen name="Signupscreen" component={Signupscreen} />
-      <Stack.Screen name="Homescreen" component={LogoutButton} />
+      <Stack.Screen name="Homescreen"  component={LogoutButton} />
     </Stack.Navigator>
   );
 };

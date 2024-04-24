@@ -17,7 +17,7 @@ const ShowModal = ({modalVisible, setModalVisible, allResult}) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>{`Basic Metabolic Rate : ${parseInt(result)}`}</Text>
-            <Text  style={styles.modalText}>{`your calorie as per activity : ${parseInt(actResult)}`}</Text>
+            {/* <Text  style={styles.modalText}>{`your calorie as per activity : ${parseInt(actResult)}`}</Text> */}
             <Text style={styles.modalText}>{`Calorie needed to ${motive} weight : ${parseInt(motiveResult)}`}</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}

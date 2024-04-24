@@ -1,27 +1,43 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createDrawerNavigator,} from '@react-navigation/drawer';
 import React from 'react';
 import TabRoutes from './TabRoutes';
 import ProfileScreen from '../screens/ProfileScreen';
 import Calculator from '../screens/Calculator';
-import About from '../screens/About';
+import About from '../components/About';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LogoutButton from '../screens/Logout';
 import MainScreen from '../screens/MainScreen';
+import { createStackNavigator } from '@react-navigation/stack';
+import RecipeList from './RecipeList';
 
 // import { NavigationContainer } from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
-const Mainstack = () => {
+const Mainstack = ({navigate,route}) => {
+
   return (
-    <Drawer.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator initialRouteName='HomeDrawer' screenOptions={{headerShown:false}}>
+
+        <Stack.Screen name="HomeDrawer" component={Drawerstack} />
+     
+      <Stack.Screen name="Modal" component={RecipeList} />
+      
+    </Stack.Navigator>
+  );
+}
+
+const Drawerstack = ({navigate, route}) => {
+  return (
+    <Drawer.Navigator screenOptions={{headerShown: true}}>
       <Drawer.Screen
         name="Mainscreen"
-        component={TabRoutes}
+        component={MainScreen}
         options={{
           title: 'Home',
           drawerIcon: ({color, size}) => (
@@ -40,10 +56,10 @@ const Mainstack = () => {
         }}
       />
       <Drawer.Screen
-        name="CalculateCalorie"
+        name="Calorie Calculator"
         component={Calculator}
         options={{
-          title: 'CalculateCalorie',
+          title: 'Calorie Calculator',
           drawerIcon: ({color, size}) => (
             <Ionicons name="fitness" size={size} color={color} />
           ),
@@ -63,7 +79,7 @@ const Mainstack = () => {
           ),
         }}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="About"
         component={About}
         options={{
@@ -76,14 +92,15 @@ const Mainstack = () => {
             />
           ),
         }}
-      />
+      /> */}
       <Drawer.Screen
         name="Signout"
+        // listeners={}
         component={LogoutButton}
         options={{
           title: 'Signout',
           drawerIcon: ({color, size}) => (
-            <FontAwesome name="sign-out" size={size} color={color} />
+            <FontAwesome name="Signout" size={size} color={color} />
           ),
         }}
       />

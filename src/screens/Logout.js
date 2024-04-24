@@ -3,24 +3,18 @@ import React from 'react';
 import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {signOut} from 'firebase/auth';
 import {firebase_auth} from '../../firebase';
-import {useNavigation} from '@react-navigation/native';
 import {Newcontext} from './Authiopn';
 import {useContext} from 'react';
 
 const LogoutButton = () => {
   const {logout} = useContext(Newcontext);
-  const navigation = useNavigation();
 
-  const out = () => {
-    navigation.navigate('Loginscreen');
-  };
   const handleLogout = () => {
     const auth = firebase_auth;
 
     signOut(auth)
       .then(() => {
         logout();
-        out();
       })
       .catch(error => alert(error.message));
   };

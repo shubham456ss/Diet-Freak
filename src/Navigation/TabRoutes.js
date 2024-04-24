@@ -14,11 +14,13 @@ import MainScreen from '../screens/MainScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import Calculator from '../screens/Calculator';
 import LogoutButton from '../screens/Logout';
-import About from '../screens/About';
+// import About from '../screens/About';
+import { Modal } from 'react-native';
+import RecipeList from './RecipeList';
 
 const BottomTab = createBottomTabNavigator();
 
-export const TabRoutes = () => {
+export const TabRoutes = ({navigation,route}) => {
   return (
     <BottomTab.Navigator
       // tabBar={tabsProps => (
@@ -36,7 +38,7 @@ export const TabRoutes = () => {
         },
         tabBarActiveTintColor: 'black',
         tabBarStyle: {
-          height: 73,
+          height: 70,
           paddingHorizontal: 20,
           borderTopRightRadius: 40,
           borderTopLeftRadius: 40,
@@ -56,7 +58,7 @@ export const TabRoutes = () => {
         name="Calculate Calorie"
         component={Calculator}
         options={{
-          tabBarLabel: 'Calculate Calorie',
+          tabBarLabel: 'Calorie Calculator',
           tabBarIcon: ({color, size}) => (
             <Fontisto name="fire" color={color} size={size} />
           ),
@@ -77,6 +79,9 @@ export const TabRoutes = () => {
           ),
         }}
       />
+      {/* <BottomTab.Group screenOptions={{presentation: 'modal'}}>
+        <BottomTab.Screen name="Recipe" component={RecipeList} />
+      </BottomTab.Group> */}
     </BottomTab.Navigator>
   );
 };

@@ -2,7 +2,6 @@
 import React, { useContext } from 'react';
 import {View, StyleSheet} from 'react-native';
 import { Newcontext } from '../screens/Authiopn';
-import TabRoutes from './TabRoutes';
 import Authstack from './AuthStack';
 import Mainstack from './MainStack';
 

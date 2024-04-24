@@ -1,13 +1,14 @@
 /* eslint-disable quotes */ /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Pressable,
   SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import SelectList from '../components/SelectList';
@@ -20,6 +21,7 @@ import {
   Diet_Data,
   Meal_Data
 } from '../components/CalData';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function MainScreen() {
 
@@ -31,9 +33,34 @@ function MainScreen() {
 
   const url = `${API_URL}?diet=${diet}&maxCalories=${calorie}&cuisine=${cuisine}`;
 
+  useEffect(() => {
+    AsyncStorage.getItem('apidata').then((value) => {
+      if (value !== null || value !== undefined) {
+        setApiData(JSON.parse(value));
+      }
+      });
+    console.log('---------------');
+  }, []);
+  
   async function GenerateData() {
-      const results = await fetchApi(url);
-      setApiData(results);
+
+    if (apiData.length) {
+      await AsyncStorage.removeItem('apidata', (err) => {
+        console.log(err);
+        console.log("clearing data");
+      });
+    }
+
+    const result = await fetchApi(url);
+    if (result !== null && result !== undefined) {
+      await AsyncStorage.setItem('apidata', JSON.stringify(result));
+    }
+
+     AsyncStorage.getItem('apidata').then(value => {
+       if (value !== null || value !== undefined) {
+         setApiData(JSON.parse(value));
+       }
+     });
   }
 
   return (
@@ -70,11 +97,9 @@ function MainScreen() {
           <Text style={Styles.btn.text}>Generate</Text>
         </Pressable>
 
-        
-
         <Generate apiData={apiData} calorie={parseFloat(calorie)} />
 
-        {/* <ModalList 
+        {/* <ModalList
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
           apiData={apiData}
@@ -146,6 +171,3 @@ const Styles = StyleSheet.create({
 });
 
 export default MainScreen;
-
-
-

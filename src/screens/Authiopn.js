@@ -1,3 +1,5 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable semi */ /* eslint-disable prettier/prettier */
 
 import {createContext, useState, useEffect} from 'react';
@@ -6,12 +8,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const Newcontext = createContext();
 
 export const Contextmain = ({children}) => {
-  const [email, setemail] = useState('');
-  const [password, setpassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [usertoken, setusertoken] = useState(null);
-  const [name, setname] = useState('');
+  const [name, setName] = useState('');
+  const [login, isLogin] = useState(false);
 
   const loggin = () => {
+    
     setusertoken('wel');
     AsyncStorage.setItem('usertoken', 'wel');
   };
@@ -24,24 +28,24 @@ export const Contextmain = ({children}) => {
     try {
       let user = await AsyncStorage.getItem('usertoken');
       setusertoken(user);
+      isLogin(true);
     } catch (error) {
       console.log(error);
     }
   };
-  const saveName = async username => {
+  const saveName = async () => {
     try {
-      await AsyncStorage.setItem('name', username);
-      setname(username);
+      console.log("name in save ame fun" ,name);
+      await AsyncStorage.setItem('name', name);
     } catch (error) {
       console.log(error);
     }
   };
 
   // Function to save email in AsyncStorage
-  const saveEmail = async useremail => {
+  const saveEmail = async () => {
     try {
-      await AsyncStorage.setItem('email', useremail);
-      setemail(useremail);
+      await AsyncStorage.setItem('email', email);
     } catch (error) {
       console.log(error);
     }
@@ -54,29 +58,31 @@ export const Contextmain = ({children}) => {
     // Load name from AsyncStorage
     AsyncStorage.getItem('name').then(storedName => {
       if (storedName) {
-        setname(storedName);
+        setName(storedName);
       }
     });
     // Load email from AsyncStorage
     AsyncStorage.getItem('email').then(storedEmail => {
       if (storedEmail) {
-        setemail(storedEmail);
+        setEmail(storedEmail);
       }
     });
-  }, []);
+  },[]);
 
   return (
     <Newcontext.Provider
       value={{
+        name,
+        setName,
         email,
-        setemail:saveEmail,
+        setEmail,
         password,
-        setpassword,
+        setPassword,
         loggin,
         logout,
         usertoken,
-        name,
-        setname:saveName,
+        saveEmail,
+        saveName,
       
       }}>
       {children}
