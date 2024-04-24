@@ -257,12 +257,14 @@ const Styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 10,
     fontSize: 15,
+    color:'black',
   },
   fieldSet: {
     borderRadius: 8,
     borderWidth: 0.6,
     borderColor: '#acacad',
     backgroundColor: '#fff',
+    color:'black'
   },
   legend: {
     color: 'black',

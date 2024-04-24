@@ -62,12 +62,17 @@ export const Contextmain = ({children}) => {
       }
     });
     // Load email from AsyncStorage
+<<<<<<< HEAD
     AsyncStorage.getItem('email').then(storedEmail => {
       if (storedEmail) {
         setEmail(storedEmail);
       }
     });
   },[]);
+=======
+    
+  }, []);
+>>>>>>> 4c19106017884ea644e0faf2bb7ad0eba9ff6860
 
   return (
     <Newcontext.Provider
