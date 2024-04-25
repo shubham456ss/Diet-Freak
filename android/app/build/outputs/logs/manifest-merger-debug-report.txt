@@ -12,7 +12,9 @@ MERGED from [:react-native-gesture-handler] C:\Users\shubh\Desktop\App_test\node
 MERGED from [:react-native-reanimated] C:\Users\shubh\Desktop\App_test\node_modules\react-native-reanimated\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-safe-area-context] C:\Users\shubh\Desktop\App_test\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-screens] C:\Users\shubh\Desktop\App_test\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:react-native-svg] C:\Users\shubh\Desktop\App_test\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-vector-icons] C:\Users\shubh\Desktop\App_test\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [com.facebook.react:react-android:0.73.4] C:\Users\shubh\.gradle\caches\transforms-3\44af16fc22f35a7417eefc9c5c5284f7\transformed\jetified-react-android-0.73.4-debug\AndroidManifest.xml:2:1-24:12
 MERGED from [com.facebook.fresco:flipper-fresco-plugin:3.1.3] C:\Users\shubh\.gradle\caches\transforms-3\472e455bc6ba159c82189360f33bfebd\transformed\jetified-flipper-fresco-plugin-3.1.3\AndroidManifest.xml:8:1-13:12
 MERGED from [com.facebook.fresco:flipper:3.1.3] C:\Users\shubh\.gradle\caches\transforms-3\e26bc00668a461b0a4cfb6d7e67641b6\transformed\jetified-flipper-3.1.3\AndroidManifest.xml:2:1-7:12
@@ -65,6 +67,7 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\shubh\.gradle\ca
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\shubh\.gradle\caches\transforms-3\1f48a39a309efba7dbb15d4ca2803563\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\shubh\.gradle\caches\transforms-3\bd109cff3c161a0507917b20f33d7017\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] C:\Users\shubh\.gradle\caches\transforms-3\c8e14d90222eb1ac6dfc59784474bbfa\transformed\coordinatorlayout-1.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.webkit:webkit:1.4.0] C:\Users\shubh\.gradle\caches\transforms-3\c9c985ebe3b2f0edf73a1aae455133a2\transformed\webkit-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.autofill:autofill:1.1.0] C:\Users\shubh\.gradle\caches\transforms-3\4de399cdf1bf78ddad7c03968ee30040\transformed\jetified-autofill-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\shubh\.gradle\caches\transforms-3\8f85343ef57208fb5d86017fdbc92520\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\shubh\.gradle\caches\transforms-3\47100063607877a97379f77c10f1d23b\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -110,6 +113,8 @@ ADDED from C:\Users\shubh\Desktop\App_test\android\app\src\main\AndroidManifest.
 MERGED from C:\Users\shubh\Desktop\App_test\android\app\src\main\AndroidManifest.xml:5:5-24:19
 MERGED from C:\Users\shubh\Desktop\App_test\android\app\src\main\AndroidManifest.xml:5:5-24:19
 INJECTED from C:\Users\shubh\Desktop\App_test\android\app\src\debug\AndroidManifest.xml:5:5-8:50
+MERGED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [com.facebook.react:react-android:0.73.4] C:\Users\shubh\.gradle\caches\transforms-3\44af16fc22f35a7417eefc9c5c5284f7\transformed\jetified-react-android-0.73.4-debug\AndroidManifest.xml:18:5-22:19
 MERGED from [com.facebook.react:react-android:0.73.4] C:\Users\shubh\.gradle\caches\transforms-3\44af16fc22f35a7417eefc9c5c5284f7\transformed\jetified-react-android-0.73.4-debug\AndroidManifest.xml:18:5-22:19
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\shubh\.gradle\caches\transforms-3\789836737041f34cf46bca2002b57c4d\transformed\material-1.9.0\AndroidManifest.xml:24:5-20
@@ -200,8 +205,12 @@ MERGED from [:react-native-safe-area-context] C:\Users\shubh\Desktop\App_test\no
 MERGED from [:react-native-safe-area-context] C:\Users\shubh\Desktop\App_test\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-screens] C:\Users\shubh\Desktop\App_test\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-screens] C:\Users\shubh\Desktop\App_test\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-svg] C:\Users\shubh\Desktop\App_test\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-svg] C:\Users\shubh\Desktop\App_test\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-vector-icons] C:\Users\shubh\Desktop\App_test\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-vector-icons] C:\Users\shubh\Desktop\App_test\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.react:react-android:0.73.4] C:\Users\shubh\.gradle\caches\transforms-3\44af16fc22f35a7417eefc9c5c5284f7\transformed\jetified-react-android-0.73.4-debug\AndroidManifest.xml:10:5-44
 MERGED from [com.facebook.react:react-android:0.73.4] C:\Users\shubh\.gradle\caches\transforms-3\44af16fc22f35a7417eefc9c5c5284f7\transformed\jetified-react-android-0.73.4-debug\AndroidManifest.xml:10:5-44
 MERGED from [com.facebook.fresco:flipper-fresco-plugin:3.1.3] C:\Users\shubh\.gradle\caches\transforms-3\472e455bc6ba159c82189360f33bfebd\transformed\jetified-flipper-fresco-plugin-3.1.3\AndroidManifest.xml:11:5-44
@@ -306,6 +315,8 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\shubh\.gradle\caches\transform
 MERGED from [androidx.print:print:1.0.0] C:\Users\shubh\.gradle\caches\transforms-3\bd109cff3c161a0507917b20f33d7017\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] C:\Users\shubh\.gradle\caches\transforms-3\c8e14d90222eb1ac6dfc59784474bbfa\transformed\coordinatorlayout-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] C:\Users\shubh\.gradle\caches\transforms-3\c8e14d90222eb1ac6dfc59784474bbfa\transformed\coordinatorlayout-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.webkit:webkit:1.4.0] C:\Users\shubh\.gradle\caches\transforms-3\c9c985ebe3b2f0edf73a1aae455133a2\transformed\webkit-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.webkit:webkit:1.4.0] C:\Users\shubh\.gradle\caches\transforms-3\c9c985ebe3b2f0edf73a1aae455133a2\transformed\webkit-1.4.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.autofill:autofill:1.1.0] C:\Users\shubh\.gradle\caches\transforms-3\4de399cdf1bf78ddad7c03968ee30040\transformed\jetified-autofill-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.autofill:autofill:1.1.0] C:\Users\shubh\.gradle\caches\transforms-3\4de399cdf1bf78ddad7c03968ee30040\transformed\jetified-autofill-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\shubh\.gradle\caches\transforms-3\8f85343ef57208fb5d86017fdbc92520\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -358,6 +369,22 @@ MERGED from [com.android.ndk.thirdparty:openssl:1.1.1l-beta-1] C:\Users\shubh\.g
 		INJECTED from C:\Users\shubh\Desktop\App_test\android\app\src\debug\AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from C:\Users\shubh\Desktop\App_test\android\app\src\debug\AndroidManifest.xml
+provider#com.reactnativecommunity.webview.RNCWebViewFileProvider
+ADDED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-64
+	android:exported
+		ADDED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-83
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-15:63
+	android:resource
+		ADDED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:17-60
+	android:name
+		ADDED from [:react-native-webview] C:\Users\shubh\Desktop\App_test\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:17-67
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
 ADDED from [com.facebook.react:react-android:0.73.4] C:\Users\shubh\.gradle\caches\transforms-3\44af16fc22f35a7417eefc9c5c5284f7\transformed\jetified-react-android-0.73.4-debug\AndroidManifest.xml:16:5-78
 	android:name

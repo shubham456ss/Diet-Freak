@@ -4,6 +4,9 @@
 
 import {createContext, useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { signOut } from 'firebase/auth';
+import {firebase_auth} from '../../firebase';
+import { Alert } from 'react-native';
 
 export const Newcontext = createContext();
 
@@ -19,9 +22,17 @@ export const Contextmain = ({children}) => {
     setusertoken('wel');
     AsyncStorage.setItem('usertoken', 'wel');
   };
+
   const logout = () => {
-    AsyncStorage.removeItem('usertoken');
-    setusertoken(null);
+    try {
+      signOut(firebase_auth).then(() => {
+        AsyncStorage.removeItem('usertoken');
+        setusertoken(null);
+      }).catch((err)=>{console.log(err);})
+    }
+    catch (err) {
+      console.log(err);
+    }
   };
 
   const isLoggedin = async () => {
@@ -35,7 +46,6 @@ export const Contextmain = ({children}) => {
   };
   const saveName = async () => {
     try {
-      console.log("name in save ame fun" ,name);
       await AsyncStorage.setItem('name', name);
     } catch (error) {
       console.log(error);
@@ -62,17 +72,13 @@ export const Contextmain = ({children}) => {
       }
     });
     // Load email from AsyncStorage
-<<<<<<< HEAD
+
     AsyncStorage.getItem('email').then(storedEmail => {
       if (storedEmail) {
         setEmail(storedEmail);
       }
     });
   },[]);
-=======
-    
-  }, []);
->>>>>>> 4c19106017884ea644e0faf2bb7ad0eba9ff6860
 
   return (
     <Newcontext.Provider

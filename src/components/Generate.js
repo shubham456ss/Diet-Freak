@@ -9,10 +9,9 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
   Image,
   TouchableOpacity,
-  ScrollView,
-  SafeAreaView,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import {useNavigation} from '@react-navigation/native';
@@ -120,7 +119,6 @@ function Generate({ apiData, calorie }) {
     </TouchableOpacity>
   );
 
-<<<<<<< HEAD
    return (
      <FlatList
        nestedScrollEnabled
@@ -134,71 +132,6 @@ function Generate({ apiData, calorie }) {
        ListHeaderComponent={HeaderComponent}
      />
    );
-=======
-  // Example usage:
-  // const items = [
-  //     {
-  //         id: 1079930,
-  //         title: "Crock Pot Pasta Bolognese Sauce",
-  //     nutrition: {
-  //           name:"yello",
-  //             nutrients: [
-  //                 { name: "Calories", amount: 174.105, unit: "kcal" },
-  //             ]
-  //         }
-  //     },
-  // ];
-
-  return (
-    <FlatList
-      nestedScrollEnabled
-      data={tempFilteredData}
-      renderItem={({item}) => (
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'lightgrey',
-            borderRadius: 10,
-            marginTop: 8,
-          }}>
-          <Image
-            height={70}
-            width={70}
-            source={{
-              uri: item.image,
-            }}
-            borderRadius={5}
-          />
-          <View
-            style={{
-              flex: 1,
-              margin: 5,
-              height: 70,
-              padding: 10,
-              justifyContent: 'center',
-            }}>
-            <Text style={styles.text}>{item.title}</Text>
-            <Text style={styles.item}>
-              Calories:
-              {
-                item.nutrition.nutrients.find(
-                  nutrient => nutrient.name === 'Calories',
-                ).amount
-              }
-            </Text>
-          </View>
-        </View>
-      )}
-      keyExtractor={item => item.id}
-      ItemSeparatorComponent={myItemSeparator}
-      ListEmptyComponent={myListEmpty}
-      ListHeaderComponent={HeaderComponent}
-    />
-  );
->>>>>>> 4c19106017884ea644e0faf2bb7ad0eba9ff6860
 }
 
 const styles = StyleSheet.create({
@@ -208,27 +141,15 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   item: {
-<<<<<<< HEAD
     fontWeight:'bold',
    flexWrap:'wrap',
-=======
->>>>>>> 4c19106017884ea644e0faf2bb7ad0eba9ff6860
     marginTop: 5,
     fontSize: 15,
-    fontWeight: '900',
-    color: 'grey',
   },
   text: {
-    color: 'black',
     fontSize: 15,
-<<<<<<< HEAD
     fontWeight:'bold',
     color:'black',
-=======
-    fontFamily: 'popins',
-    flexWrap: 'nowrap',
-    fontWeight: 'bold',
->>>>>>> 4c19106017884ea644e0faf2bb7ad0eba9ff6860
   },
   flat: {
     flex: 1,

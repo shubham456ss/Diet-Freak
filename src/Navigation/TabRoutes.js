@@ -14,14 +14,13 @@ import MainScreen from '../screens/MainScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import Calculator from '../screens/Calculator';
 import LogoutButton from '../screens/Logout';
-<<<<<<< HEAD
+
 // import About from '../screens/About';
 import { Modal } from 'react-native';
 import RecipeList from './RecipeList';
-=======
+
 import About from '../screens/About';
 import { ScrollView } from 'react-native';
->>>>>>> 4c19106017884ea644e0faf2bb7ad0eba9ff6860
 
 const BottomTab = createBottomTabNavigator();
 

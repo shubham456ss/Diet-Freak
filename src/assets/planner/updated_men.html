@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+<title>7 days plan</title>
+
+</head>
+
+
+<body>
+
+    <style>
+      /* @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100); */
+      body {
+        background-color: #fffeef;
+        font-family: 'Roboto', helvetica, arial, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        text-rendering: optimizeLegibility;
+      }
+
+      div.table-title {
+        display: block;
+        margin: auto;
+        padding: 5px;
+      }
+
+      .table-title h3 {
+        color: #fafafa;
+        font-size: 30px;
+        font-weight: 400;
+        font-style: normal;
+        font-family: 'Roboto', helvetica, arial, sans-serif;
+        text-transform: uppercase;
+      }
+
+      .container {
+        position: relative;
+        text-align: center;
+        color: white;
+        z-index: 5;
+      }
+
+      .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      h6 {
+        color: #ffffff;
+        font-family: sans-serif;
+        margin: 100px auto;
+        margin-top: 0;
+        margin-bottom: 0px;
+        text-align: center;
+        font-size: 40px;
+        position: relative;
+      }
+
+      /*      HEADER STYLES       */
+
+      header {
+        background-color: #7f7e7a;
+        height: 200px;
+        margin: 0px auto;
+      }
+
+      h1 {
+        color: #ffffff;
+        font-family: sans-serif;
+        text-align: center;
+        font-size: 40px;
+        max-width: 600px;
+        position: relative;
+      }
+
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        position: relative;
+      }
+
+      h3 {
+        color: #ffffff;
+        font-family: sans-serif;
+        margin: 20px auto;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        font-size: 100px;
+        position: relative;
+      }
+
+      span {
+        background: #fff;
+      }
+
+      /*** Table Styles **/
+
+      .table-fill {
+        background: white;
+        border-width: 10px;
+        border-radius: 3px;
+        border-collapse: collapse;
+        height: 530px;
+        margin: auto;
+        max-width: 1100px;
+        padding: 5px;
+        width: 100%;
+        animation: float 5s infinite;
+      }
+
+      th {
+        color: #d5dde5;
+        background: #1b1e24;
+        border-bottom: 4px solid #fffeef;
+        border-right: 1px solid #fffeef;
+        font-size: 23px;
+        font-weight: 100;
+        padding: 24px;
+        text-align: left;
+        vertical-align: middle;
+      }
+
+      tr {
+        border-top: 2px solid #fffeef;
+        border-bottom: 1px solid #fffeef;
+        color: #1c1e27;
+        font-size: 26px;
+        font-weight: normal;
+      }
+
+      tr:first-child {
+        border-top: none;
+      }
+
+      tr:last-child {
+        border-bottom: none;
+      }
+
+      tr:nth-child(odd) td {
+        background: #ffd6de;
+      }
+
+      tr:nth-child(even) td {
+        background: #d6ebec;
+      }
+
+      tr:last-child td:first-child {
+        border-bottom-left-radius: 3px;
+      }
+
+      tr:last-child td:last-child {
+        border-bottom-right-radius: 3px;
+      }
+
+      td {
+        background: #7c1e1e;
+        padding: 20px;
+        text-align: left;
+        vertical-align: middle;
+        font-weight: 300;
+        font-size: 23px;
+        border-right: 3px solid #fffeef;
+      }
+
+      td:last-child {
+        border-right: 0px;
+      }
+
+      th.text-left {
+        text-align: left;
+        font-weight: bold;
+      }
+
+      th.text-center {
+        text-align: center;
+        padding-left: 20px;
+      }
+
+      th.text-right {
+        text-align: right;
+      }
+
+      td.text-left {
+        text-align: center;
+        font-weight: 900;
+        font-size: 26px;
+      }
+
+      td.text-center {
+        text-align: center;
+        font-size: large;
+        font-weight: 600;
+      }
+
+      td.text-right {
+        text-align: right;
+      }
+    </style>
+
+    <header>
+
+        <h1 style="font-size: 180px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">7 - Day</h1>
+        <h3>
+            CRASH DIET PLAN 
+        </h3>
+        </h1>
+
+    </header>
+
+
+    <div>
+        <h6>
+            <div class="container">
+                <img src="shape_1_web.svg" style="width: 260px;">
+                <div class="centered" style="font-size: 50px; font-family: Arial, Helvetica, sans-serif; font-weight:bold;">DAY 1</div>
+            </div>
+        </h6>
+
+        <table class="table-fill">
+
+            <tbody class="table-hover">
+                <tr>
+                    <td class="text-left" style="width: 150px;">Breakfast</td>
+                    <td class="text-center">Bread and milk.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Lunch</td>
+                    <td class="text-center">Rice with veg curry.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Snack</td>
+                    <td class="text-center">Patato chips and coffee.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Dinner
+
+                    </td>
+                    <td class="text-center">Rice with veg curry.</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <hr style="margin-top: 8px;margin-bottom: 5px; width: 50%;">
+    </div>
+
+
+
+    <div>
+        <h6>
+            <div class="container">
+                <img src="shape_1_web.svg" style="width: 260px;">
+                <div class="centered" style="font-size: 50px; font-family: Arial, Helvetica, sans-serif; font-weight:bold;">DAY 2</div>
+            </div>
+        </h6>
+
+        <table class="table-fill">
+
+            <tbody class="table-hover">
+                <tr>
+                    <td class="text-left" style="width: 150px;">Breakfast</td>
+                    <td class="text-center">Roti,dal and milk.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Lunch</td>
+                    <td class="text-center"> Rice with veg curry.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Snack</td>
+                    <td class="text-center">Coffee and biscuit.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Dinner
+
+                    </td>
+                    <td class="text-center">Rice with veg curry.</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <hr style="margin-top: 8px;margin-bottom: 5px; width: 50%;">
+    </div>
+
+    <div>
+        <h6>
+            <div class="container">
+                <img src="shape_1_web.svg" style="width: 260px;">
+                <div class="centered" style="font-size: 50px; font-family: Arial, Helvetica, sans-serif; font-weight:bold;">DAY 3</div>
+            </div>
+        </h6>
+
+        <table class="table-fill">
+
+            <tbody class="table-hover">
+                <tr>
+                    <td class="text-left" style="width: 150px;">Breakfast</td>
+                    <td class="text-center">Upma and milk.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Lunch</td>
+                    <td class="text-center">Rice with chicken curry.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Snack</td>
+                    <td class="text-center">coffee.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Dinner
+
+                    </td>
+                    <td class="text-center">Rice with curry.</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <hr style="margin-top: 8px;margin-bottom: 5px; width: 50%;">
+    </div>
+
+    <div>
+        <h6>
+            <div class="container">
+                <img src="shape_1_web.svg" style="width: 260px;">
+                <div class="centered" style="font-size: 50px; font-family: Arial, Helvetica, sans-serif; font-weight:bold;">DAY 4</div>
+            </div>
+        </h6>
+
+        <table class="table-fill">
+
+            <tbody class="table-hover">
+                <tr>
+                    <td class="text-left" style="width: 150px;">Breakfast</td>
+                    <td class="text-center">Masala dosa and milk.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Lunch</td>
+                    <td class="text-center">Rice with chicken curry.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Snack</td>
+                    <td class="text-center">Coffee.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Dinner
+
+                    </td>
+                    <td class="text-center">Rice with veg curry.</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <hr style="margin-top: 8px;margin-bottom: 5px; width: 50%;">
+    </div>
+
+    <div>
+        <h6>
+            <div class="container">
+                <img src="shape_1_web.svg" style="width: 260px;">
+                <div class="centered" style="font-size: 50px; font-family: Arial, Helvetica, sans-serif; font-weight:bold;">DAY 5</div>
+            </div>
+        </h6>
+
+        <table class="table-fill">
+
+            <tbody class="table-hover">
+                <tr>
+                    <td class="text-left" style="width: 150px;">Breakfast</td>
+                    <td class="text-center">Veg pulav and milk.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Lunch</td>
+                    <td class="text-center">Rice with curd.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Snack</td>
+                    <td class="text-center">Bonda and coffee.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Dinner
+
+                    </td>
+                    <td class="text-center">Rice and rasam.</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <hr style="margin-top: 8px;margin-bottom: 5px; width: 50%;">
+    </div>
+
+    <div>
+        <h6>
+            <div class="container">
+                <img src="shape_1_web.svg" style="width: 260px;">
+                <div class="centered" style="font-size: 50px; font-family: Arial, Helvetica, sans-serif; font-weight:bold;">DAY 6</div>
+            </div>
+        </h6>
+
+        <table class="table-fill">
+
+            <tbody class="table-hover">
+                <tr>
+                    <td class="text-left" style="width: 150px;">Breakfast</td>
+                    <td class="text-center">Sandwich and milk.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Lunch</td>
+                    <td class="text-center">Rice with veg curry.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Snack</td>
+                    <td class="text-center">Samosa and coffee.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Dinner
+
+                    </td>
+                    <td class="text-center">Rice with veg curry.</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <hr style="margin-top: 8px;margin-bottom: 5px; width: 50%;">
+    </div>
+
+    <div>
+        <h6>
+            <div class="container">
+                <img src="shape_1_web.svg" style="width: 260px;">
+                <div class="centered" style="font-size: 50px; font-family: Arial, Helvetica, sans-serif; font-weight:bold;">DAY 7</div>
+            </div>
+        </h6>
+
+        <table class="table-fill">
+
+            <tbody class="table-hover">
+                <tr>
+                    <td class="text-left" style="width: 150px;">Breakfast</td>
+                    <td class="text-center">Roti, milk and chicken fry.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Lunch</td>
+                    <td class="text-center">Mutton Briyani.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Snack</td>
+                    <td class="text-center">Chicken fry and coffee.</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Dinner
+
+                    </td>
+                    <td class="text-center">Mutton briyani.</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <hr style="margin-top: 8px;margin-bottom: 5px; width: 50%;">
+    </div>
+
+
+
+</body>
+
+</html>
