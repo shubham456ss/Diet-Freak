@@ -1,25 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\shubh\\.gradle\\daemon\\8.5\\com.app_test.app-mergeDebugResources-34:\\values-v18\\values-v18.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\shubh\\.gradle\\caches\\transforms-3\\6da08d94d274a42ed385d9ef810923ca\\transformed\\appcompat-1.6.1\\res\\values-v18\\values-v18.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "48",
-                        "endOffsets": "99"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "com.app_test.app-mergeDebugResources-34:/values-v18/values-v18.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\shubh\\.gradle\\caches\\transforms-3\\6da08d94d274a42ed385d9ef810923ca\\transformed\\appcompat-1.6.1\\res\\values-v18\\values-v18.xml",
+                    "source": "C:\\Users\\yashv\\.gradle\\caches\\transforms-3\\6da08d94d274a42ed385d9ef810923ca\\transformed\\appcompat-1.6.1\\res\\values-v18\\values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

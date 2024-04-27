@@ -1,7 +1,7 @@
 /* eslint-disable quotes */ /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Pressable,
   SafeAreaView,
@@ -11,30 +11,21 @@ import {
   View,
 } from 'react-native';
 import SelectList from '../components/SelectList';
-import Generate from "../components/Generate";
+import Generate from '../components/Generate';
 import fetchApi from '../components/FetchApi';
-import { API_URL } from '@env';
+import {API_URL} from '@env';
 import ModalList from '../components/ModalList';
-import {
-  Cuisine_Data,
-  Diet_Data,
-  Meal_Data
-} from '../components/CalData';
+import {Cuisine_Data, Diet_Data, Meal_Data} from '../components/CalData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function MainScreen() {
-
   const [calorie, setCalorie] = useState('');
   const [cuisine, setCusine] = useState(Cuisine_Data);
   const [diet, setDiet] = useState(Diet_Data);
   const [apiData, setApiData] = useState([]);
-   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const url = `${API_URL}?diet=${diet}&maxCalories=${calorie}&cuisine=${cuisine}`;
-
-
-
-
 
   // useEffect(() => {
   //   AsyncStorage.getItem('apidata').then((value) => {
@@ -44,27 +35,26 @@ function MainScreen() {
   //     });
   //   console.log('---------------');
   // }, []);
-  
-  async function GenerateData() {
 
+  async function GenerateData() {
     if (apiData.length) {
-      await AsyncStorage.removeItem('apidata', (err) => {
+      await AsyncStorage.removeItem('apidata', err => {
         console.log(err);
-        console.log("clearing data");
+        console.log('clearing data');
       });
     }
 
     const result = await fetchApi(url);
-    
+
     if (result !== null && result !== undefined) {
       await AsyncStorage.setItem('apidata', JSON.stringify(result));
     }
 
-     AsyncStorage.getItem('apidata').then(value => {
-       if (value !== null || value !== undefined) {
-         setApiData(JSON.parse(value));
-       }
-     });
+    AsyncStorage.getItem('apidata').then(value => {
+      if (value !== null || value !== undefined) {
+        setApiData(JSON.parse(value));
+      }
+    });
   }
 
   return (
@@ -116,11 +106,11 @@ function MainScreen() {
 
 const Styles = StyleSheet.create({
   sectionContainer: {
-    flexDirection:'column',
-    marginTop:20,
+    flexDirection: 'column',
+    marginTop: 20,
     paddingHorizontal: 20,
-    gap:10,
-    justifyContent:'space-between',
+    gap: 10,
+    justifyContent: 'space-between',
   },
   Title: {
     fontSize: 18,
