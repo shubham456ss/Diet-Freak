@@ -1,10 +1,16 @@
-import { View, Text,Image , StyleSheet, Alert , TouchableOpacity} from 'react-native'
-import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
+import React, {useState} from 'react';
 
-
-const SevenDay = ({ navigation, route }) => {
+const SevenDay = ({navigation, route}) => {
   return (
-    <View style={styles.root }>
+    <View style={styles.root}>
       <Text style={styles.text}>Select your gender</Text>
 
       <TouchableOpacity
@@ -21,7 +27,7 @@ const SevenDay = ({ navigation, route }) => {
       </TouchableOpacity>
     </View>
   );
-}
+};
 const styles = StyleSheet.create({
   root: {
     flex: 1,
@@ -29,7 +35,7 @@ const styles = StyleSheet.create({
     height: 100,
     alignItems: 'center',
     justifyContent: 'space-around',
-    
+
     // gap:-30,
     // backgroundColor: '#fef68d',
   },
@@ -41,7 +47,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 40,
     fontWeight: 'bold',
-    textShadowRadius:10,
+    textShadowRadius: 10,
     textShadowColor: 'white',
   },
 });

@@ -1,25 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\shubh\\.gradle\\daemon\\8.5\\com.app_test.app-mergeDebugResources-34:\\values-port\\values-port.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\shubh\\.gradle\\caches\\transforms-3\\6da08d94d274a42ed385d9ef810923ca\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "55",
-                        "endOffsets": "106"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "com.app_test.app-mergeDebugResources-34:/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\shubh\\.gradle\\caches\\transforms-3\\6da08d94d274a42ed385d9ef810923ca\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
+                    "source": "C:\\Users\\yashv\\.gradle\\caches\\transforms-3\\6da08d94d274a42ed385d9ef810923ca\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
