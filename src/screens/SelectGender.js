@@ -46,29 +46,29 @@ const SelectPlanner = ({ navigation, route }) => {
             <AdultMale width={width} height={height} />
           </TouchableOpacity>
 
-          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 3})}}>
+          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 4})}}>
             <OldMale width={width} height={height} />
           </TouchableOpacity>
         </>
       ) : (
         <>
-          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 3})}}>
+          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 0})}}>
             <KidFemale width={width} height={height} />
           </TouchableOpacity>
 
-          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 4})}}>
+          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 1})}}>
             <TeenFemale width={width} height={height} />
           </TouchableOpacity>
 
-          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 5})}}>
+          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 3})}}>
             <AdultFemale width={width} height={height} />
           </TouchableOpacity>
 
-          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 6})}}>
+          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 4})}}>
             <OldFemale width={width} height={height} />
           </TouchableOpacity>
 
-          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 7})}}>
+          <TouchableOpacity  onPress={() => {  navigation.navigate('Planner', {pathkey: 5})}}>
             <Pregnant width={width} height={height} />
           </TouchableOpacity>
         </>

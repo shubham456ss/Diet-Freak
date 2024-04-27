@@ -4,33 +4,62 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React, { useState } from 'react';
 import { WebView } from 'react-native-webview';
-import HTML from '../assets/planner/updated_pregnancy_diet.html'
+// import HTML from '../assets/planner/updated_pregnancy_diet.html'
 
 const Planner = ({ navigation, route }) => {
   const { pathkey } = route.params || '../assets/planner/updated_kids.html';
-  // const filepath = `file:///C:/Users/shubh/Desktop/App_test/src/assets/planner/${path}`;
 
   const [link, setLink] = useState('');
+  console.log(pathkey);
 
   function Link() {
 
     switch (pathkey) {
-
-      case pathkey:
-        return (<WebView
-        originWhitelist={['*']}
-        source={require('../assets/planner/updated_kids.html')}
-        />)
-      
-      case pathkey:
+      case 0:
         return (
           <WebView
             originWhitelist={['*']}
             source={require('../assets/planner/updated_kids.html')}
           />
         );
-      
-      default:
+      case 1:
+        return (
+          <WebView
+            originWhitelist={['*']}
+            source={require('../assets/planner/updated_teens.html')}
+          />
+        );
+
+        case 2:
+           return (
+             <WebView
+               originWhitelist={['*']}
+               source={require('../assets/planner/updated_men.html')}
+             />
+           );
+        case 3:
+           return (
+             <WebView
+               originWhitelist={['*']}
+               source={require('../assets/planner/updated_women.html')}
+             />
+           );
+        case 4:
+           return (
+             <WebView
+               originWhitelist={['*']}
+               source={require('../assets/planner/updated_senior_citizen.html')}
+             />
+           );
+        case 5:
+           return (
+             <WebView
+               originWhitelist={['*']}
+               source={require('../assets/planner/updated_pregnancy_diet.html')}
+             />
+           );
+        
+        default:
         break;
     }
  
