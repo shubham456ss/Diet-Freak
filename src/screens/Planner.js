@@ -1,15 +1,13 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable semi */
 /* eslint-disable no-trailing-spaces */
-import {View, Text, StyleSheet} from 'react-native';
-import React, { useState } from 'react';
+import {View, StyleSheet} from 'react-native';
+import React from 'react';
 import { WebView } from 'react-native-webview';
-// import HTML from '../assets/planner/updated_pregnancy_diet.html'
 
 const Planner = ({ navigation, route }) => {
-  const { pathkey } = route.params || '../assets/planner/updated_kids.html';
+  const { pathkey } = route.params;
 
-  const [link, setLink] = useState('');
   console.log(pathkey);
 
   function Link() {

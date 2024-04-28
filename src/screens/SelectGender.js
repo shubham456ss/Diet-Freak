@@ -1,4 +1,5 @@
 /* eslint-disable space-infix-ops */
+import React from 'react';
 import {
   View,
   Text,
@@ -6,7 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+
 import {
   KidFemale,
   KidMale,
@@ -19,7 +20,7 @@ import {
   Pregnant,
 } from '../components/SvgComponent';
 
-const SelectPlanner = ({ navigation, route }) => {
+const SelectGender = ({ navigation, route }) => {
   
   const {gender} = route.params;
 
@@ -89,11 +90,10 @@ const styles = StyleSheet.create({
     width: 150,
   },
   text: {
-    // alignItems:'flex-start',
     color:'black',
     fontSize: 30,
     fontWeight:'bold',
   }
  
 });
-export default SelectPlanner;
+export default SelectGender;

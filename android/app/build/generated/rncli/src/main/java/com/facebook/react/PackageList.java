@@ -17,6 +17,8 @@ import com.reactnativegif.GifPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.RNGestureHandlerPackage;
+// react-native-image-picker
+import com.imagepicker.ImagePickerPackage;
 // react-native-reanimated
 import com.swmansion.reanimated.ReanimatedPackage;
 // react-native-safe-area-context
@@ -77,6 +79,7 @@ public class PackageList {
       new GifPackage(),
       new AsyncStoragePackage(),
       new RNGestureHandlerPackage(),
+      new ImagePickerPackage(),
       new ReanimatedPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),

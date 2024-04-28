@@ -16,11 +16,11 @@ import Appnav from './src/Navigation/Appnav';
 function App() {
 
   return (
-    <NavigationContainer>
-      <Contextmain>
+    <Contextmain>
+      <NavigationContainer>
         <Appnav />
-      </Contextmain>
-    </NavigationContainer>
+      </NavigationContainer>
+    </Contextmain>
   );
 }
 

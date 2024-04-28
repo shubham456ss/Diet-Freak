@@ -13,16 +13,14 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {useNavigation} from '@react-navigation/native';
+import { ActivityIndicator } from 'react-native';
 
 
 function Generate({ apiData, calorie }) {
   
   const navigation = useNavigation();
-
-  // const [apiResult, setApiResult] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
 
   const [tempFilteredData, totalCalorie] = filterDataByCalorie(apiData,calorie);
 
@@ -104,23 +102,25 @@ function Generate({ apiData, calorie }) {
             uri: item.image,
           }}
           borderRadius={5}
+          onError={(err)=>{console.log(err)}}
         />
         <View style={{padding: 5,flexWrap:'nowrap'}}>
           <Text style={styles.text}>{item.title}</Text>
-          <Text style={styles.item}>
-            {
-              item.nutrition.nutrients.find(
+          <Text style={styles.item}>{
+             `${ item.nutrition.nutrients.find(
                 nutrient => nutrient.name === 'Calories',
-              ).amount
-            }
+              ).amount} kcal`
+          }
+           
           </Text>
         </View>
       </View>
     </TouchableOpacity>
   );
 
-   return (
-     <FlatList
+  return (
+    apiData ? 
+      <FlatList
        nestedScrollEnabled
        data={tempFilteredData}
        renderItem={({item}) => (
@@ -129,8 +129,14 @@ function Generate({ apiData, calorie }) {
        keyExtractor={item => item.id}
        ItemSeparatorComponent={myItemSeparator}
        ListEmptyComponent={myListEmpty}
-       ListHeaderComponent={HeaderComponent}
-     />
+       ListHeaderComponent={HeaderComponent}     
+     />: <ActivityIndicator style={
+        { height:500,
+          justifyContent: 'center',
+          alignItems:'center'
+        }
+      } color={'black'} size={50}/>
+  
    );
 }
 

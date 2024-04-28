@@ -3,6 +3,7 @@
 
 import React, {useEffect, useState} from 'react';
 import {
+  Alert,
   Pressable,
   SafeAreaView,
   StyleSheet,
@@ -19,11 +20,10 @@ import {Cuisine_Data, Diet_Data, Meal_Data} from '../components/CalData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function MainScreen() {
-  const [calorie, setCalorie] = useState('');
-  const [cuisine, setCusine] = useState(Cuisine_Data);
-  const [diet, setDiet] = useState(Diet_Data);
+  const [calorie, setCalorie] = useState(null);
+  const [cuisine, setCusine] = useState(null);
+  const [diet, setDiet] = useState(null);
   const [apiData, setApiData] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
 
   const url = `${API_URL}?diet=${diet}&maxCalories=${calorie}&cuisine=${cuisine}`;
 
@@ -36,35 +36,43 @@ function MainScreen() {
   //   console.log('---------------');
   // }, []);
 
+
+  function isInputFilled(){
+    
+    if (diet === null || calorie === '' || cuisine === null) {
+      Alert.alert("Alert","Please select all fields");
+      return false;
+    }
+    return true;
+  }
   async function GenerateData() {
-    if (apiData.length) {
-      await AsyncStorage.removeItem('apidata', err => {
-        console.log(err);
-        console.log('clearing data');
-      });
+
+    if(isInputFilled()){
+    
+      const result = await fetchApi(url);
+
+          if (result !== null && result !== undefined) {
+            await AsyncStorage.setItem('apidata', JSON.stringify(result));
+          }
+
+          AsyncStorage.getItem('apidata').then(value => {
+            if (value !== null || value !== undefined) {
+              setApiData(JSON.parse(value));
+            }
+          });
     }
 
-    const result = await fetchApi(url);
-
-    if (result !== null && result !== undefined) {
-      await AsyncStorage.setItem('apidata', JSON.stringify(result));
-    }
-
-    AsyncStorage.getItem('apidata').then(value => {
-      if (value !== null || value !== undefined) {
-        setApiData(JSON.parse(value));
-      }
-    });
+    return;
   }
 
   return (
-    <SafeAreaView>
       <View style={Styles.sectionContainer}>
         <SelectList
           label={'Food Type'}
           data={Diet_Data}
           value={diet}
           setValue={setDiet}
+          
         />
 
         <View style={Styles.fieldSet}>
@@ -72,7 +80,7 @@ function MainScreen() {
           <TextInput
             style={Styles.input}
             search={false}
-            onChangeText={setCalorie}
+            onChangeText={(text)=>setCalorie(text)}
             value={calorie}
             placeholder="Calories"
             labelboardType="numeric"
@@ -100,7 +108,6 @@ function MainScreen() {
           calorie={parseFloat(calorie)}
         /> */}
       </View>
-    </SafeAreaView>
   );
 }
 

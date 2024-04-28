@@ -23,26 +23,27 @@ import {
 } from '../components/CalData';
 
 export default function Calculator() {
-  const [diet, setDiet] = useState(Cuisine_Data);
-  const [motive, setMotive] = useState(MotiveData);
+  const [diet, setDiet] = useState('');
+  const [motive, setMotive] = useState('');
   // const [fatPercent, setFatPercent] = useState(BodyFatData);
-  const [unit, setUnit] = useState(UnitData);
-  const [gender, setGender] = useState(GenderData);
+  const [unit, setUnit] = useState('');
+  const [gender, setGender] = useState();
   const [height, setHeight] = useState('');
   const [inch, setInch] = useState('');
   const [weight, setWeight] = useState('');
   const [age, setAge] = useState('');
-  const [activityLvl, setActivityLvl] = useState(Activity);
+  const [activityLvl, setActivityLvl] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+
   const [result, setResult] = useState(0);
   const [actResult, setActResult] = useState(0);
   const [motiveResult, setMotiveResult] = useState(0);
 
   function showCalorie() {
     let ans =
-      10 * parseFloat(weight) +
-      6.25 * parseFloat(height) -
-      5.0 * parseFloat(age);
+      10 * parseInt(weight) +
+      6.25 * parseInt(height) -
+      5.0 * parseInt(age);
 
     if (gender === 'Male') {
       ans += 5;
@@ -50,8 +51,9 @@ export default function Calculator() {
       ans -= 161;
     }
     
-    activityLevel();
+    activityLevel(ans);
     motivation();
+
     if (motive === 'US-Standard') {
         convertToUS(); 
     }
@@ -71,31 +73,28 @@ export default function Calculator() {
     }
   }
 
-  function activityLevel() {
+  function activityLevel(result) {
 
     let act;
     switch (activityLvl) {
       case Activity[0].value:
         act = result * Activity[0].value;
-        break;
+        return;
 
       case Activity[1].value:
         act = result * Activity[1].value;
-        break;
+          return;
 
       case Activity[2].value:
         act = result * Activity[2].value;
-        break;
+         return;
 
       case Activity[3].value:
         act = result * Activity[3].value;
-        break;
+          return;
       case Activity[4].value:
         act = result * Activity[4].value;
-        break;
-
-      default:
-        break;
+         return;
     }
     setActResult(act);
   }
@@ -105,7 +104,7 @@ export default function Calculator() {
 
     switch (motive) {
       case MotiveData[0].value:
-        actAns = actResult * 0.5;
+        actAns = actResult * 0.1;
         break;
 
       case MotiveData[1].value:
@@ -113,10 +112,7 @@ export default function Calculator() {
         break;
 
       case MotiveData[2].value:
-        actAns = actResult * 0.6;
-        break;
-
-      default:
+        actAns = actResult * 0.2;
         break;
     }
     setMotiveResult(actAns);
@@ -151,7 +147,7 @@ export default function Calculator() {
         {unit === 'US-Standard' ? (
           <View >
             <TextInput
-              // onChangeText={setHeight}
+              onChangeText={setHeight}
               value={height}
               placeholder="Feet"
               labelboardType="numeric"
@@ -160,7 +156,7 @@ export default function Calculator() {
 
             <View style={{borderTopWidth: 1, borderTopColor: '#acacae'}}>
               <TextInput
-                onChangeText={setInch}
+                onChangeText={(inch)=>setInch(inch)}
                 value={inch}
                 placeholder=" Inch"
                 labelboardType="numeric"
@@ -171,7 +167,7 @@ export default function Calculator() {
         ) : (
           <TextInput
             style={Styles.input}
-            onChangeText={setHeight}
+            onChangeText={(h)=>setHeight(h)}
             value={height}
             placeholder="cm"
             labelboardType="numeric"
@@ -184,7 +180,7 @@ export default function Calculator() {
         <Text style={Styles.legend}>Weight</Text>
         <TextInput
           style={Styles.input}
-          onChangeText={setWeight}
+          onChangeText={(w)=>setWeight(w)}
           value={weight}
           placeholder="in kg"
           labelboardType="numeric"
@@ -196,7 +192,7 @@ export default function Calculator() {
         <Text style={Styles.legend}>Age</Text>
         <TextInput
           style={Styles.input}
-          onChangeText={setAge}
+          onChangeText={(age)=>setAge(age)}
           value={age}
           labelboardType="numeric"
           placeholderTextColor={'#0008'}
