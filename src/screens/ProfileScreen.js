@@ -3,7 +3,7 @@
 // const ProfileComponent = () => {
 //   const {name} = useContext(Newcontext);
 
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 import {
   View,
   Text,
@@ -19,7 +19,7 @@ import {
 import {launchImageLibrary} from 'react-native-image-picker';
 
 const ProfileComponent = () => {
-  const [name, setName] = useState('John Doe');
+  const [name, setName] = useState('Shubham ');
   const [age, setAge] = useState('30');
   const [weight, setWeight] = useState('70');
   const [height, setHeight] = useState('170');
@@ -34,11 +34,11 @@ const ProfileComponent = () => {
     'https://as1.ftcdn.net/v2/jpg/01/03/15/44/1000_F_103154410_fYWuEf2HuAAYZoAZrCy1zLJtQYz9DC3i.jpg',
   );
   const [avatarSource, setAvatarSource] = useState(null);
-  const [profileImage,setProfileImage] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
 
   const handleChoosePhoto = () => {
     const options = {
-      mediaType:"photo",
+      mediaType: 'photo',
       maxWidth: 500,
       maxHeight: 500,
       quality: 1,
@@ -55,7 +55,7 @@ const ProfileComponent = () => {
       } else {
         // You can also display the image using data:
         // const source = { uri: 'data:image/jpeg;base64,' + response.data };
-  
+
         setProfileImage(response.assets[0]);
       }
     });
@@ -74,11 +74,18 @@ const ProfileComponent = () => {
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.avatarContainer}>
-
-          <TouchableOpacity style={styles.touchable} onPress={handleChoosePhoto}>
+          <TouchableOpacity
+            style={styles.touchable}
+            onPress={handleChoosePhoto}>
             {profileImage ? (
-              <Image source={{ uri: `data:${profileImage.type};base64,${profileImage.base64}` || profileImage.uri}} style={styles.Image} />
-              
+              <Image
+                source={{
+                  uri:
+                    `data:${profileImage.type};base64,${profileImage.base64}` ||
+                    profileImage.uri,
+                }}
+                style={styles.Image}
+              />
             ) : (
               <Image source={{uri: DummyImage}} style={styles.Image} />
             )}
@@ -249,31 +256,29 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 18,
-    letterSpacing:2,
+    letterSpacing: 2,
   },
   avatarContainer: {
-    paddingTop:10,
-    backgroundColor:'#fff',
+    paddingTop: 10,
+    backgroundColor: '#fff',
     borderColor: '#9B9B9B',
     justifyContent: 'center',
     alignItems: 'center',
-   
   },
   Image: {
-    borderColor:'black',
-    borderWidth:2,
+    borderColor: 'black',
+    borderWidth: 2,
     borderRadius: 100,
-    width:200,
+    width: 200,
     height: 200,
   },
   touchable: {
-    position:'relative',
+    position: 'relative',
     borderRadius: 100,
-  }
+  },
 });
 
 export default ProfileComponent;
-
 
 // {
 //   "assets": [{

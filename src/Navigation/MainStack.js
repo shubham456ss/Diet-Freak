@@ -18,6 +18,7 @@ import SevenDay from '../screens/SevenDay';
 import SelectGender from './../screens/SelectGender';
 import {Newcontext} from '../screens/Authiopn';
 import Planner from '../screens/Planner';
+import HomePage from '../screens/home';
 
 
 const Drawer = createDrawerNavigator();
@@ -33,12 +34,14 @@ const Mainstack = ({navigate,route}) => {
       <Stack.Screen name="Modal" component={RecipeList} />
 
       <Stack.Screen name="Planner" component={Planner} />
+      <Stack.Screen name="creatediet" component={MainScreen}/>
+
 
       <Stack.Screen name="Gender" component={SelectGender} />
       
     </Stack.Navigator>
   );
-}
+};
 
 
 function CustomDrawerContent(props) {
@@ -62,7 +65,7 @@ const Drawerstack = ({ navigate, route }) => {
     >
       <Drawer.Screen
         name="Mainscreen"
-        component={MainScreen}
+        component={HomePage}
         options={{
           title: 'Home',
           drawerIcon: ({color, size}) => (
