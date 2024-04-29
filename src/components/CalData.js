@@ -3,7 +3,7 @@
 export const MotiveData = [
   {key: '1', label: 'Loose', value: 'loose'},
   {key: '2', label: 'Maintain', value: 'maintain'},
-  {key: '3', label: 'Build-Muscle', value: 'build-muscle'},
+  {key: '3', label: 'Build Muscle', value: 'build-muscle'},
 ];
 export const UnitData = [
   {key: '1', label: 'US-Standard', value: 'US-Standard'},
@@ -20,7 +20,7 @@ export const BodyFatData = [
 ];
 
 export const Activity = [
-  // {key: '0', label: 'BMR', value: 1},
+  {key: '0', label: 'BMR', value: 1},
   {key: '1', label: 'Sedenatry', value: 1.2},
   {key: '2', label: 'Light', value: 1.375},
   {key: '3', label: 'Moderate', value: 1.465},
@@ -29,22 +29,22 @@ export const Activity = [
 ];
 
 export const Cuisine_Data = [
-   {key: '1', label: 'indian', value: 'indian'},
-   {key: '2', label: 'chinese', value: 'chinese'},
-   {key: '3', label: 'italian', value: 'italian'},
-   {key: '4', label: 'thai', value: 'thai'},
-   {key: '5', label: 'southern', value: 'southern'},
-   {key: '6', label: 'japanese', value: 'japanese'},
+   {key: '1', label: 'Indian', value: 'indian'},
+   {key: '2', label: 'Chinese', value: 'chinese'},
+   {key: '3', label: 'Italian', value: 'italian'},
+   {key: '4', label: 'Thai', value: 'thai'},
+   {key: '5', label: 'Southern', value: 'southern'},
+   {key: '6', label: 'Japanese', value: 'japanese'},
  ];
 
  export const Diet_Data = [
-   {key: '1', label: 'pescetarian', value: 'pescetarian'},
-   {key: '2', label: 'lacto vegetarian', value: 'lacto vegetarian'},
-   {key: '3', label: 'ovo vegetarian', value: 'ovo vegetarian'},
-   {key: '4', label: 'vegan', value: 'vegan'},
-   {key: '5', label: 'paleo', value: 'paleo'},
-   {key: '6', label: 'primal', value: 'primal'},
-   {key: '7', label: 'vegetarian', value: 'vegetarian'},
+   {key: '1', label: 'Pescetarian', value: 'pescetarian'},
+   {key: '2', label: 'Lacto vegetarian', value: 'lacto vegetarian'},
+   {key: '3', label: 'Ovo vegetarian', value: 'ovo vegetarian'},
+   {key: '4', label: 'Vegan', value: 'vegan'},
+   {key: '5', label: 'Paleo', value: 'paleo'},
+   {key: '6', label: 'Primal', value: 'primal'},
+   {key: '7', label: 'Vegetarian', value: 'vegetarian'},
  ];
 
  export const Meal_Data = [

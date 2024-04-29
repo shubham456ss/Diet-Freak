@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable radix */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import {
@@ -36,7 +38,6 @@ export default function Calculator() {
   const [modalVisible, setModalVisible] = useState(false);
 
   const [result, setResult] = useState(0);
-  const [actResult, setActResult] = useState(0);
   const [motiveResult, setMotiveResult] = useState(0);
 
   function showCalorie() {
@@ -51,8 +52,9 @@ export default function Calculator() {
       ans -= 161;
     }
     
-    activityLevel(ans);
-    motivation();
+    let res = activityLevel(ans);
+    let motiveRes = motivation(res);
+    setMotiveResult(motiveRes);
 
     if (motive === 'US-Standard') {
         convertToUS(); 
@@ -62,7 +64,7 @@ export default function Calculator() {
     setModalVisible(true);
   }
 
-  function convertToUS() {
+  function convertToUS() {//////////////
 
     if (inch >= 12) {
       setHeight(height + 1);
@@ -73,49 +75,41 @@ export default function Calculator() {
     }
   }
 
-  function activityLevel(result) {
+  function activityLevel(res) {
 
-    let act;
     switch (activityLvl) {
       case Activity[0].value:
-        act = result * Activity[0].value;
-        return;
+        return res * Activity[0].value;
 
       case Activity[1].value:
-        act = result * Activity[1].value;
-          return;
+        return res * Activity[1].value;
 
       case Activity[2].value:
-        act = result * Activity[2].value;
-         return;
+        return res * Activity[2].value;
 
       case Activity[3].value:
-        act = result * Activity[3].value;
-          return;
+        return res * Activity[3].value;
+
       case Activity[4].value:
-        act = result * Activity[4].value;
-         return;
+        return res * Activity[4].value;
+
+      case Activity[5].value:
+        return res * Activity[5].value;
     }
-    setActResult(act);
   }
 
-  function motivation() {
-    let actAns;
+  function motivation(result) {
 
     switch (motive) {
       case MotiveData[0].value:
-        actAns = actResult * 0.1;
-        break;
+       return  result-(result * 0.2);
 
       case MotiveData[1].value:
-        actAns = actResult;
-        break;
+        return result;
 
       case MotiveData[2].value:
-        actAns = actResult * 0.2;
-        break;
+      return result - result * 0.1;
     }
-    setMotiveResult(actAns);
   }
 
   return (
@@ -220,7 +214,7 @@ export default function Calculator() {
       <ShowModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
-        allResult={[result, actResult, motiveResult, motive]}
+        allResult={[result, motiveResult, motive]}
       />
     </View>
   );

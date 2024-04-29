@@ -2,7 +2,7 @@ import React from 'react';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 
 const ShowModal = ({modalVisible, setModalVisible, allResult}) => {
-  const [result, actResult, motiveResult, motive] = allResult;
+  const [result, motiveResult, motive] = allResult;
 
   return (
     <View style={styles.centeredView}>
@@ -17,8 +17,7 @@ const ShowModal = ({modalVisible, setModalVisible, allResult}) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>{`Basic Metabolic Rate : ${parseInt(result)}`}</Text>
-            {/* <Text  style={styles.modalText}>{`your calorie as per activity : ${parseInt(actResult)}`}</Text> */}
-            <Text style={styles.modalText}>{`Calorie needed to ${motive} weight : ${parseInt(motiveResult)}`}</Text>
+            <Text style={styles.modalText}>{`For ${motive} weight : ${parseInt(motiveResult)}`}</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>

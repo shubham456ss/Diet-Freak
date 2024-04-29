@@ -18,6 +18,9 @@ import SevenDay from '../screens/SevenDay';
 import SelectGender from './../screens/SelectGender';
 import {Newcontext} from '../screens/Authiopn';
 import Planner from '../screens/Planner';
+import ChartComponent from './../components/Chart';
+import LinearGrad from '../components/LinearGrad';
+// import ChartComponent from './../components/Chart';
 
 
 const Drawer = createDrawerNavigator();
@@ -62,7 +65,7 @@ const Drawerstack = ({ navigate, route }) => {
     >
       <Drawer.Screen
         name="Mainscreen"
-        component={MainScreen}
+        component={ChartComponent} 
         options={{
           title: 'Home',
           drawerIcon: ({color, size}) => (

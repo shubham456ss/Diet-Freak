@@ -2,8 +2,9 @@
 import {View, Text, Button, ActivityIndicator,Image, StyleSheet} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import HTML,{defaultSystemFonts} from 'react-native-render-html';
+import RenderHTML,{} from 'react-native-render-html';
 import {ScrollView} from 'react-native-gesture-handler';
+import ChartComponent from './../components/Chart';
 
 const RecipeList = ({navigation, route}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,8 +32,9 @@ const RecipeList = ({navigation, route}) => {
     bold: {
       color:'red'
     },
-    // Add more styles for other HTML tags as needed
   };
+
+    
 
   const fetchData = async () => {
     try {
@@ -49,38 +51,48 @@ const RecipeList = ({navigation, route}) => {
     navigation.goBack();
   };
   return (
-    <ScrollView contentInsetAdjustmentBehavior="automatic">
+    <ScrollView contentInsetAdjustmentBehavior="automatic" >
       <View style={style.container}>
-       
+        <Button title="Go Back" style={style.btn} onPress={goBack} />
 
         {data ? ( // <Text>{data.summary}</Text>
           <>
-              <Image
-                style={style.image}
-                height={200}
-                source={{
-                  uri: data?.image,
-                }}
-              />
+            <Image
+              style={style.image}
+              height={200}
+              source={{
+                uri: data?.image,
+              }}
+            />
 
             <Text style={style.text}>Summary</Text>
-            <HTML tagsStyles={tagsStyles} contentWidth={100} source={{html: data?.summary}} />
 
-            <Text style={style.text}>Some Step Recipe</Text>
+            <View style={style.summaryContainer}>
+              <RenderHTML
+                tagsStyles={{b: {color: 'red'}, a: {color: 'black'}}}
+                baseStyle={{fontSize: 17, color: 'black', fontFamily: 'Arial'}}
+                contentWidth={1}
+                source={{html: data?.summary}}
+              />
+            </View>
+
+            <Text style={style.text}>Recipe</Text>
 
             {data.analyzedInstructions?.map((items, index) =>
               items.steps.map((item, ind) => (
-                <Text
-                  style={{fontWeight: 'bold', color: 'black'}}
-                  key={ind}>{`\u2B24 ${item.step}`}</Text>
+                <Text style={style.recipe} key={ind}>
+                  <Text style={style.listStyle}>{'\u2B24'}</Text>
+                  {item.step}
+                </Text>
               )),
             )}
+            <Text style={style.text}>Nutrients</Text>
+            <ChartComponent/>
           </>
         ) : (
           <ActivityIndicator size="large" color="#000" />
         )}
       </View>
-      <Button title="Go Back" style={style.btn} onPress={goBack} />
     </ScrollView>
   );
 };
@@ -92,17 +104,37 @@ const style = StyleSheet.create({
     flex: 1,
   },
   text: {
-    margin: 20,
+    marginTop: 20,
+    marginBottom: 20,
+    padding: 10,
     textAlign: 'center',
-    fontSize: 28,
+    fontSize: 25,
     fontWeight: 'bold',
     color: 'black',
+    backgroundColor: '#fff',
+    elevation: 5,
   },
   btn: {
     justifyContent: 'flex-end',
-    alignItems:'flex-end',
+    alignItems: 'flex-end',
   },
   html: {
-      fontSize:20,
-    }
+    marginTop:10,
+    fontSize: 20,
+  },
+  summaryContainer: {
+    paddingHorizontal: 10,
+    // backgroundColor:'red'
+  },
+  listStyle: {
+    fontSize:15,
+    color: 'black',
+    padding: 10,
+    letterSpacing:10,
+  },
+  recipe: {
+    color:'black',
+    fontSize: 17,
+    paddingHorizontal: 10,
+  },
 });
