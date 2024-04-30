@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View,Dimensions} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
 import LinearGrad from './LinearGrad';
 

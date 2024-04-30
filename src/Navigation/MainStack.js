@@ -20,7 +20,10 @@ import {Newcontext} from '../screens/Authiopn';
 import Planner from '../screens/Planner';
 import ChartComponent from './../components/Chart';
 import LinearGrad from '../components/LinearGrad';
+import HomePage from '../screens/Homescreen';
+import Generate from '../components/Generate';
 // import ChartComponent from './../components/Chart';
+
 
 
 const Drawer = createDrawerNavigator();
@@ -38,6 +41,8 @@ const Mainstack = ({navigate,route}) => {
       <Stack.Screen name="Planner" component={Planner} />
 
       <Stack.Screen name="Gender" component={SelectGender} />
+
+      <Stack.Screen name="Diet" component={MainScreen} />
       
     </Stack.Navigator>
   );
@@ -61,11 +66,10 @@ const Drawerstack = ({ navigate, route }) => {
   return (
     <Drawer.Navigator
       screenOptions={{headerShown: true}}
-      drawerContent={props => <CustomDrawerContent {...props} />}
-    >
+      drawerContent={props => <CustomDrawerContent {...props} />}>
       <Drawer.Screen
         name="Mainscreen"
-        component={ChartComponent} 
+        component={HomePage}
         options={{
           title: 'Home',
           drawerIcon: ({color, size}) => (
@@ -108,20 +112,6 @@ const Drawerstack = ({ navigate, route }) => {
         }}
       />
       {/* <Drawer.Screen
-        name="gender"
-        component={SelectGender}
-        options={{
-          title: 'Gender',
-          drawerIcon: ({color, size}) => (
-            <MaterialCommunityIcons
-              name="information"
-              size={size}
-              color={color}
-            />
-          ),
-        }}
-      /> */}
-      {/* <Drawer.Screen
         name="About"
         component={SevenDay}
         options={{
@@ -135,16 +125,7 @@ const Drawerstack = ({ navigate, route }) => {
           ),
         }}
       /> */}
-      {/* <Drawer.Screen
-        name="Signout"
-        component={LogoutButton}
-        options={{
-          title: 'Signout',
-          drawerIcon: ({color, size}) => (
-            <MaterialIcons name="exit-to-app" size={size} color={color} />
-          ),
-        }}
-      /> */}
+      
     </Drawer.Navigator>
   );
 };

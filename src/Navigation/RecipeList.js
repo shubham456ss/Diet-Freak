@@ -54,12 +54,13 @@ const RecipeList = ({navigation, route}) => {
     <ScrollView contentInsetAdjustmentBehavior="automatic" >
       <View style={style.container}>
         <Button title="Go Back" style={style.btn} onPress={goBack} />
-
-        {data ? ( // <Text>{data.summary}</Text>
+{/* // <Text>{data.summary}</Text> */}
+        {data ? ( 
           <>
             <Image
               style={style.image}
               height={200}
+              
               source={{
                 uri: data?.image,
               }}
