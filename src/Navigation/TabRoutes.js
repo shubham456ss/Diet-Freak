@@ -19,19 +19,20 @@ import LogoutButton from '../screens/Logout';
 import { Modal } from 'react-native';
 import RecipeList from './RecipeList';
 
-import About from '../screens/About';
+// import About from '../screens/About';
 import { ScrollView } from 'react-native';
 
 const BottomTab = createBottomTabNavigator();
 
-export const TabRoutes = ({navigation,route}) => {
+const TabRoutes = ({ navigation, route }) => {
+  
   return (
     <BottomTab.Navigator
-      // tabBar={tabsProps => (
-      //   <>
-      //     <BottomTabBar {...tabsProps} />
-      //   </>
-      // )}
+      tabBar={tabsProps => (
+        <>
+          <BottomTabBar {...tabsProps} />
+        </>
+      )}
 
       initialRouteName="Home"
       screenOptions={{

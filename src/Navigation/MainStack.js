@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable no-undef */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 import {createDrawerNavigator,DrawerContentScrollView,DrawerItem,DrawerItemList} from '@react-navigation/drawer';
@@ -22,15 +24,20 @@ import ChartComponent from './../components/Chart';
 import LinearGrad from '../components/LinearGrad';
 import HomePage from '../screens/Homescreen';
 import Generate from '../components/Generate';
+import Recipescreen from '../screens/Recipescreen';
 // import ChartComponent from './../components/Chart';
+import { StyleSheet, Button } from 'react-native';
+import TabRoutes from './TabRoutes';
+import Aboutscreen from '../screens/Aboutscreen';
 
-
+ 
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
-const Mainstack = ({navigate,route}) => {
+const Mainstack = ({ navigate, route }) => {
 
+  
   return (
     <Stack.Navigator initialRouteName='HomeDrawer' screenOptions={{headerShown:false}}>
 
@@ -43,34 +50,53 @@ const Mainstack = ({navigate,route}) => {
       <Stack.Screen name="Gender" component={SelectGender} />
 
       <Stack.Screen name="Diet" component={MainScreen} />
+
+        <Stack.Screen name="recipe" component={Recipescreen} />
       
     </Stack.Navigator>
   );
 }
 
 
-function CustomDrawerContent(props) {
-  const { logout } = useContext(Newcontext);
-  return (
-    <DrawerContentScrollView {...props} >
-      <DrawerItemList {...props} />
-      <DrawerItem icon={({color, size})=>(<MaterialIcons name="exit-to-app" size={size} color={color} />)} label="SignOut" onPress={logout} />
-      
-    </DrawerContentScrollView>
-  );
-}
+// function CustomDrawerContent(props) {
+
+//   return (
+//     <DrawerContentScrollView {...props} >
+//       <DrawerItemList {...props} />
+//       <DrawerItem icon={({color, size})=>(<MaterialIcons name="exit-to-app" size={size} color={color} />)} label="SignOut"  />
+//     </DrawerContentScrollView>
+//   );
+// }
 
 
 const Drawerstack = ({ navigate, route }) => {
 
+  const { logout } = useContext(Newcontext);
+
   return (
     <Drawer.Navigator
       screenOptions={{headerShown: true}}
-      drawerContent={props => <CustomDrawerContent {...props} />}>
+      // drawerContent={props => <CustomDrawerContent {...props} />}
+    >
       <Drawer.Screen
         name="Mainscreen"
         component={HomePage}
         options={{
+          headerTitle: 'Diet Freak',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            letterSpacing: 1,
+          },
+          headerRight: () => (
+            <MaterialIcons
+              name="exit-to-app"
+              size={25}
+              color="black"
+              style={{marginEnd: 10}}
+              onPress={logout}
+            />
+          ),
           title: 'Home',
           drawerIcon: ({color, size}) => (
             <Ionicons name="home" size={size} color={color} />
@@ -111,11 +137,11 @@ const Drawerstack = ({ navigate, route }) => {
           ),
         }}
       />
-      {/* <Drawer.Screen
+      <Drawer.Screen
         name="About"
-        component={SevenDay}
+        component={Aboutscreen}
         options={{
-          title: '7day',
+          title: 'About',
           drawerIcon: ({color, size}) => (
             <MaterialCommunityIcons
               name="information"
@@ -124,10 +150,16 @@ const Drawerstack = ({ navigate, route }) => {
             />
           ),
         }}
-      /> */}
-      
+      /> 
     </Drawer.Navigator>
   );
 };
+
+// const styles = StyleSheet.create({
+
+//   headerstyle: {
+//    letterSpacing:1,
+//   }
+// })
 
 export default Mainstack;

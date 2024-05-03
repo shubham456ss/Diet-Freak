@@ -1,5 +1,4 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
 import {
   View,
   Text,
@@ -9,8 +8,8 @@ import {
     Image,
 } from 'react-native';
 
-const HomePage = () => {
-  const navigation = useNavigation();
+const HomePage = ({navigation}) => {
+  // const navigation = useNavigation();
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -39,7 +38,7 @@ const HomePage = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Dietplan')}>
+          onPress={() => navigation.navigate('recipe')}>
           <Text style={styles.buttonText}>Discover Recipes</Text>
         </TouchableOpacity>
         <Text style={styles.footerText}>

@@ -102,16 +102,21 @@ function Generate({ apiData, calorie }) {
             uri: item.image,
           }}
           borderRadius={5}
-          onError={(err)=>{console.log(err)}}
+          onError={err => {
+            console.log(err);
+          }}
         />
-        <View style={{padding: 5,flexWrap:'nowrap'}}>
-          <Text style={styles.text}>{item.title}</Text>
-          <Text style={styles.item}>{
-             `${ item.nutrition.nutrients.find(
+        <View style={{padding: 5, flexWrap: 'nowrap'}}>
+          <Text style={styles.text}>
+            {`${item.title}`.charAt(0).toUpperCase() +
+              `${item.title}`.substring(1)}
+          </Text>
+          <Text style={styles.item}>
+            {`${Math.round(
+              item.nutrition.nutrients.find(
                 nutrient => nutrient.name === 'Calories',
-              ).amount} kcal`
-          }
-           
+              ).amount,
+            )} kcal`}
           </Text>
         </View>
       </View>
@@ -121,10 +126,9 @@ function Generate({ apiData, calorie }) {
   return (
     apiData ? 
       <FlatList
-       nestedScrollEnabled
        data={tempFilteredData}
        renderItem={({item}) => (
-         <ListItem item={item} onPress={()=>{navigation.navigate('Modal',{id:item.id})}}/>
+         <ListItem item={item} onPress={()=>{navigation.navigate('Modal',{id:item.id,nutri:item.nutrition['nutrients']})}}/>
        )}
        keyExtractor={item => item.id}
        ItemSeparatorComponent={myItemSeparator}
@@ -156,9 +160,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight:'bold',
     color:'black',
-  },
-  flat: {
-    flex: 1,
-  },
+  }
 });
 export default Generate;

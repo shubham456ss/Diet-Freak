@@ -10,7 +10,9 @@ const RecipeList = ({navigation, route}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const {id} = route.params || null;
+  const {id,nutri} = route.params || null;
+
+  console.log('nutri,==>', nutri)
 
   useEffect(() => {
     fetchData();
@@ -24,17 +26,6 @@ const RecipeList = ({navigation, route}) => {
       'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
     },
   };
-
-  const tagsStyles = {
-    p: {fontSize: 16, color: 'red'}, // Style for paragraphs
-    strong: {fontWeight: 'bold'}, // Style for strong text
-    em: { fontStyle: 'italic' }, // Style for emphasized text
-    bold: {
-      color:'red'
-    },
-  };
-
-    
 
   const fetchData = async () => {
     try {
@@ -54,13 +45,12 @@ const RecipeList = ({navigation, route}) => {
     <ScrollView contentInsetAdjustmentBehavior="automatic" >
       <View style={style.container}>
         <Button title="Go Back" style={style.btn} onPress={goBack} />
-{/* // <Text>{data.summary}</Text> */}
+
         {data ? ( 
           <>
             <Image
               style={style.image}
-              height={200}
-              
+              height={250}
               source={{
                 uri: data?.image,
               }}
@@ -88,7 +78,8 @@ const RecipeList = ({navigation, route}) => {
               )),
             )}
             <Text style={style.text}>Nutrients</Text>
-            <ChartComponent/>
+
+            <ChartComponent data={nutri} {...style.chart} />
           </>
         ) : (
           <ActivityIndicator size="large" color="#000" />
@@ -105,7 +96,7 @@ const style = StyleSheet.create({
     flex: 1,
   },
   text: {
-    marginTop: 20,
+    // marginTop: 20,
     marginBottom: 20,
     padding: 10,
     textAlign: 'center',
@@ -120,22 +111,36 @@ const style = StyleSheet.create({
     alignItems: 'flex-end',
   },
   html: {
-    marginTop:10,
+    marginTop: 10,
     fontSize: 20,
   },
   summaryContainer: {
     paddingHorizontal: 10,
+    paddingBottom: 10,
     // backgroundColor:'red'
   },
   listStyle: {
-    fontSize:15,
+    fontSize: 15,
     color: 'black',
     padding: 10,
-    letterSpacing:10,
+    letterSpacing: 10,
   },
   recipe: {
-    color:'black',
+    color: 'black',
     fontSize: 17,
     paddingHorizontal: 10,
+    paddingBottom: 10,
+  },
+  image: {
+    marginVertical: 10,
+    borderWidth: 2,
+    borderBottomColor: 'red',
+  },
+  chart: {
+    height: 200,
+    width: 400-10,
+    paddingVertical: 10,
+    margin: 10,
+    borderRadius: 10,
   },
 });

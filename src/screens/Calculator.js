@@ -242,7 +242,7 @@ const Styles = StyleSheet.create({
   input: {
     width: '100%',
     height: 48,
-    borderWidth: 1,
+    // borderWidth: 1,
     borderColor: 'transparent',
     paddingHorizontal: 10,
     borderRadius: 10,
@@ -251,8 +251,10 @@ const Styles = StyleSheet.create({
   },
   fieldSet: {
     borderRadius: 8,
-    borderWidth: 0.6,
-    borderColor: '#acacad',
+    // borderWidth: 1,
+    borderBottomWidth:1,
+    // borderBottomColor:
+    borderColor: 'black',
     backgroundColor: '#fff',
     color:'black'
   },
